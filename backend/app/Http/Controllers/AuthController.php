@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthController extends Controller
@@ -12,12 +12,17 @@ class AuthController extends Controller
     //
     public function login(Request $request)
     {
-        try{
+        try {
             $data = $request->validate([
                 'email' => 'required|email',
                 'password' => 'required|string|min:6',
             ]);
-            $user =  User::where('email', $data['email'])->firstOrFail();
+            $user = User::where('email', $data['email'])->firstOrFail();
+
+            // Password check
+            if (!Hash::check($data['password'], $user->password)) {
+                return response()->json(['error' => 'Invalid credentials'], 401);
+            }
 
             $token = $user->createToken('token')->plainTextToken;
 
@@ -25,16 +30,13 @@ class AuthController extends Controller
                 'message' => 'Login successful',
                 'token' => $token,
             ]);
-
-        }catch(\Illuminate\Validation\ValidationException $e){
+        } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['error' => $e->validator->errors()], 422);
-        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'User not found'], 404);
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['error' => 'An error occurred during login'], 500);
         }
-        return response()->json(['message' => 'Login successful']);
     }
 
     public function register(Request $request)
@@ -52,6 +54,7 @@ class AuthController extends Controller
             $token = $user->createToken('token')->plainTextToken;
 
             return response()->json([
+                'success' => true,
                 'message' => 'Registration successful',
                 'token' => $token,
             ], 201);
@@ -59,7 +62,7 @@ class AuthController extends Controller
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['error' => $e->validator->errors()], 422);
         } catch (\Exception $e) {
-            return response()->json(['error' => $e], 500);
+            return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 }
