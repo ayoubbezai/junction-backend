@@ -10,13 +10,24 @@ class Sensor_reading extends Model
 
     protected $fillable = [
         'sensor_id',
-        'timestamp',
-        'value',
-        'unit'
+        'pond_id',
+        'date',
+        'salinity',
+        'dissolved_oxygen',
+        'ph',
+        'secchi_depth',
+        'water_depth',
+        'water_temp',
+        'air_temp'
     ];
 
     public function sensor()
     {
-        return $this->belongsTo(Sensor::class);
+        return $this->belongsTo(Sensor::class, 'sensor_id', 'id');
+    }
+
+    public function pond()
+    {
+        return $this->belongsTo(Pond::class, 'pond_id', 'id');
     }
 }

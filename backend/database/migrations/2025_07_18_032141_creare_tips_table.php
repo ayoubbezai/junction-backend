@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tips', function (Blueprint $table) {
             $table->id();
-            $table->string('message');
+            $table->text('message');
             $table->unsignedBigInteger('pond_id');
             $table->timestamps();
             // Add foreign key constraint

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Alert;
+use App\Events\StatUpdated;
+
 
 class AlertController extends Controller
 {
@@ -35,6 +37,7 @@ class AlertController extends Controller
             }
 
             $paginatedAlerts = $alerts->paginate($perPage);
+
 
             return response()->json([
                 'success' => true,
@@ -75,6 +78,8 @@ class AlertController extends Controller
             ]);
 
             $alert = Alert::create($data);
+            broadcast(new StatUpdated());
+
 
             return response()->json([
                 'success' => true,

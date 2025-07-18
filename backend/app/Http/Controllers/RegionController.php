@@ -9,6 +9,8 @@ use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\QueryException;
+use App\Events\StatUpdated;
+
 
 class RegionController extends Controller
 {
@@ -19,6 +21,7 @@ class RegionController extends Controller
     {
         try{
             $regions = Region::all();
+
             return response()->json([
                 'success' => true,
                 'message' => 'Regions data retrieved successfully.',
@@ -47,6 +50,8 @@ class RegionController extends Controller
                 'region_name' => 'required|string|max:255|unique:regions,region_name',
             ]);
             $region = Region::create($data);
+            broadcast(new StatUpdated());
+
             return response()->json([
                 'success' => true,
                 'message' => 'Region created successfully.',

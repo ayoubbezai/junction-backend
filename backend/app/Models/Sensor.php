@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sensor extends Model
 {
+    protected $table = 'sensor';
+
     protected $fillable = [
         'type',
         'unit',
@@ -19,9 +21,5 @@ class Sensor extends Model
     {
         return $this->belongsTo(Pond::class);
     }
-    public function screen_readings()
-    {
-        // Placeholder: update to correct related model if needed
-        return $this->hasMany(Sensor::class);
-    }
+
 }

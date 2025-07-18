@@ -10,13 +10,18 @@ return new class extends Migration
     {
         Schema::create('sensor_readings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sensor_id');
-            $table->timestamp('timestamp');
-            $table->decimal('value', 10, 3);
-            $table->string('unit');
-            $table->timestamps();
+            $table->dateTime('date');
+            $table->decimal('salinity', 8, 3)->nullable(); // ppt
+            $table->decimal('dissolved_oxygen', 8, 3)->nullable(); // mg/L
+            $table->decimal('ph', 5, 2)->nullable();
+            $table->decimal('secchi_depth', 8, 3)->nullable(); // m
+            $table->decimal('water_depth', 8, 3)->nullable(); // m
+            $table->decimal('water_temp', 5, 2)->nullable(); // C
+            $table->decimal('air_temp', 5, 2)->nullable(); // C
+            $table->unsignedBigInteger('pond_id');
+            $table->foreign('pond_id')->references('id')->on('ponds')->onDelete('cascade');
 
-            $table->foreign('sensor_id')->references('id')->on('sensor')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

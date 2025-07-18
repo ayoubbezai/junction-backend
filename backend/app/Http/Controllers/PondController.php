@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\QueryException;
 use App\Models\Pond;
+use App\Events\DashboardUpdated;
+use App\Events\StatUpdated;
+
+use App\Models\Region;
+use App\Models\Sensor;
+use App\Models\Alert;
+use App\Models\Tip;
 
 class PondController extends Controller
 {
@@ -95,6 +102,10 @@ class PondController extends Controller
             ]);
 
             $pond = Pond::create($data);
+
+
+            broadcast(new StatUpdated());
+
             return response()->json([
                 'success' => true,
                 'message' => 'Region created successfully.',

@@ -67,10 +67,12 @@ class TipController extends Controller
         try {
             $data = $request->validate([
                 'pond_id' => 'required|exists:ponds,id',
-                'message' => 'required|string|max:255',
+                'message' => 'required|string',
             ]);
 
             $tip = Tip::create($data);
+            broadcast(new StatUpdated());
+
 
             return response()->json([
                 'success' => true,

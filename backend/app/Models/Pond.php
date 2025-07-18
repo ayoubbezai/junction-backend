@@ -32,4 +32,8 @@ class Pond extends Model
     {
         return $this->hasMany(Alert::class);
     }
+    public function Sensors_reading()
+    {
+        return $this->hasMany(Sensor_reading::class);
+    }
 }

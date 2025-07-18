@@ -71,10 +71,15 @@ class Sensor_readingController extends Controller
     {
         try {
             $data = $request->validate([
-                'sensor_id' => 'required|exists:sensor,id',
-                'timestamp' => 'required|date',
-                'value' => 'required|numeric',
-                'unit' => 'required|string|max:255',
+                'pond_id' => 'required|exists:ponds,id',
+                'date' => 'required|date_format:Y-m-d H:i:s',
+                'salinity' => 'nullable|numeric',
+                'dissolved_oxygen' => 'nullable|numeric',
+                'ph' => 'nullable|numeric',
+                'secchi_depth' => 'nullable|numeric',
+                'water_depth' => 'nullable|numeric',
+                'water_temp' => 'nullable|numeric',
+                'air_temp' => 'nullable|numeric',
             ]);
 
             $reading = Sensor_reading::create($data);
@@ -106,7 +111,7 @@ class Sensor_readingController extends Controller
     public function show(string $id)
     {
         try {
-            $reading = Sensor_reading::with('sensor')->findOrFail($id);
+            $reading = Sensor_reading::with('pond')->findOrFail($id);
             return response()->json([
                 'success' => true,
                 'message' => 'Sensor reading retrieved successfully.',
@@ -134,16 +139,21 @@ class Sensor_readingController extends Controller
         try {
             $reading = Sensor_reading::findOrFail($id);
             $data = $request->validate([
-                'sensor_id' => 'sometimes|exists:sensor,id',
-                'timestamp' => 'sometimes|date',
-                'value' => 'sometimes|numeric',
-                'unit' => 'sometimes|string|max:255',
+                'pond_id' => 'sometimes|exists:ponds,id',
+                'date' => 'sometimes|date_format:Y-m-d H:i:s',
+                'salinity' => 'nullable|numeric',
+                'dissolved_oxygen' => 'nullable|numeric',
+                'ph' => 'nullable|numeric',
+                'secchi_depth' => 'nullable|numeric',
+                'water_depth' => 'nullable|numeric',
+                'water_temp' => 'nullable|numeric',
+                'air_temp' => 'nullable|numeric',
             ]);
             $reading->update($data);
             return response()->json([
                 'success' => true,
                 'message' => 'Sensor reading updated successfully.',
-                'data' => $reading->fresh('sensor')
+                'data' => $reading->fresh('pond')
             ], 200);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
