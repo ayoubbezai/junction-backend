@@ -91,11 +91,8 @@ class PondController extends Controller
                 'location' => 'required|string|max:255',
                 'size' => 'required|string|max:255',
                 'pond_name' => 'required|string|max:255',
-                'safe_range' => 'required|json'
+                'safe_range' => 'required|array'
             ]);
-
-            // Ensure safe_range is stored as a proper JSON string
-            $data['safe_range'] = json_encode(json_decode($data['safe_range'], true));
 
             $pond = Pond::create($data);
             return response()->json([
