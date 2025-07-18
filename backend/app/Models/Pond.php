@@ -11,7 +11,12 @@ class Pond extends Model
         'pond_name',
         'location',
         'size',
-        'region_id'
+        'region_id',
+        'safe_range'
+    ];
+
+    protected $casts = [
+        'safe_range' => 'array',
     ];
 
     public function region()

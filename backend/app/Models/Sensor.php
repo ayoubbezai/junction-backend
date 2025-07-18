@@ -21,4 +21,8 @@ class Sensor extends Model
     {
         return $this->belongsTo(Pond::class);
     }
+    public function screen_reafings()
+{
+    return $this->hasMany(Sensor::class);
+}
 }

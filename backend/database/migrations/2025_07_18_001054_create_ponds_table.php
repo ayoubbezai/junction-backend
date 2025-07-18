@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("location");
             $table->string("pond_name");
             $table->string("size");
+            $table->json("safe_range");
             $table->unsignedBigInteger('region_id')->nullable();
             $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->timestamps();

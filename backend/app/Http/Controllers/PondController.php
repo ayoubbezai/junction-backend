@@ -85,16 +85,18 @@ class PondController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
         try{
             $data = $request->validate([
                 'region_id' => 'required|exists:regions,id',
                 'location' => 'required|string|max:255',
                 'size' => 'required|string|max:255',
                 'pond_name' => 'required|string|max:255',
-                
+                'safe_range' => 'required|json'
             ]);
+
+            // Ensure safe_range is stored as a proper JSON string
+            $data['safe_range'] = json_encode(json_decode($data['safe_range'], true));
+
             $pond = Pond::create($data);
             return response()->json([
                 'success' => true,
@@ -111,12 +113,14 @@ class PondController extends Controller
         } catch (QueryException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Database error occurred while creating region.'
+                'message' => 'Database error occurred while creating region.',
+                'errors' => [$e->getMessage()]
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to create region. Please try again later.'
+                'message' => 'Failed to create region. Please try again later.',
+                'errors' => [$e->getMessage()]
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
