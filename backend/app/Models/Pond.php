@@ -23,8 +23,13 @@ class Pond extends Model
     {
         return $this->belongsTo(Region::class);
     }  
-    public function sensor()
+    public function sensors()
     {
         return $this->hasMany(Sensor::class);
+    }
+
+    public function alerts()
+    {
+        return $this->hasMany(Alert::class);
     }
 }
