@@ -8,6 +8,11 @@ class Region extends Model
 {
     
     protected $fillable = [
-        'name',
+        'region_name',
     ];
+
+    // public function ponds()
+    // {
+    //     return $this->hasMany(Pond::class);
+    // }
 }
