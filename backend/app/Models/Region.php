@@ -11,8 +11,8 @@ class Region extends Model
         'region_name',
     ];
 
-    // public function ponds()
-    // {
-    //     return $this->hasMany(Pond::class);
-    // }
+    public function ponds()
+    {
+        return $this->hasMany(Pond::class);
+    }
 }
