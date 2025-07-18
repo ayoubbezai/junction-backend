@@ -208,8 +208,10 @@ const chartData = [
     { name: 'Sun', avgPH: 7.3, avgDO: 7.0 },
 ];
 
-const DashboardGraph = () => (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-xs p-6 h-full flex flex-col">
+const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+const DashboardGraph = ({ chartData }) => (
+    <div className="bg-white rounded-xl border border-gray-200 shadow p-6 h-full flex flex-col">
         <div className="mb-6">
             <h3 className="text-lg font-semibold text-gray-900">Weekly Water Quality Trends</h3>
             <p className="text-sm text-gray-500">Average values across all ponds</p>
@@ -218,71 +220,67 @@ const DashboardGraph = () => (
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                     data={chartData}
-                    margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
+                    margin={{ top: 10, right: 30, left: 0, bottom: 10 }}
                 >
-                    <defs>
-                        <linearGradient id="colorPH" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.2} />
-                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
-                        </linearGradient>
-                        <linearGradient id="colorDO" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.2} />
-                            <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
-                        </linearGradient>
-                    </defs>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
                     <XAxis
                         dataKey="name"
-                        tick={{ fontSize: 12, fill: '#6b7280' }}
+                        tick={{ fontSize: 13, fill: '#6b7280' }}
                         axisLine={false}
                         tickLine={false}
                     />
                     <YAxis
                         yAxisId="left"
-                        tick={{ fontSize: 12, fill: '#3b82f6' }}
+                        tick={{ fontSize: 13, fill: '#6b7280' }}
                         axisLine={false}
                         tickLine={false}
-                        domain={[6, 8.5]}
+                        domain={[0, 10]}
                     />
                     <YAxis
                         yAxisId="right"
                         orientation="right"
-                        tick={{ fontSize: 12, fill: '#10b981' }}
+                        tick={{ fontSize: 13, fill: '#6b7280' }}
                         axisLine={false}
                         tickLine={false}
-                        domain={[6, 8]}
+                        domain={[0, 10]}
                     />
                     <Tooltip
                         contentStyle={{
+                            background: '#fff',
+                            border: '1px solid #e5e7eb',
                             borderRadius: 8,
-                            fontSize: 12,
-                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                            fontSize: 13,
+                            color: '#111827',
+                            fontWeight: 400,
                         }}
+                        labelStyle={{ color: '#2563eb', fontWeight: 600 }}
+                        itemStyle={{ fontWeight: 400 }}
                     />
                     <Legend
                         iconType="circle"
-                        wrapperStyle={{ fontSize: 12, paddingTop: 20 }}
+                        wrapperStyle={{ fontSize: 13, paddingTop: 16 }}
+                        formatter={(value, entry) => (
+                            <span style={{ color: entry.color, marginLeft: 4 }}>{entry.value === 'avgPH' ? 'Avg pH' : 'Avg DO (mg/L)'}</span>
+                        )}
                     />
-                    <Area
+                    <Line
                         yAxisId="left"
                         type="monotone"
                         dataKey="avgPH"
-                        stroke="#3b82f6"
-                        fillOpacity={1}
-                        fill="url(#colorPH)"
-                        strokeWidth={2}
-                        activeDot={{ r: 6 }}
+                        stroke="#2563eb"
+                        strokeWidth={3}
+                        dot={{ r: 5, fill: '#2563eb', stroke: '#fff', strokeWidth: 1.5 }}
+                        activeDot={{ r: 7, fill: '#2563eb', stroke: '#fff', strokeWidth: 2 }}
                         name="Avg pH"
                     />
-                    <Area
+                    <Line
                         yAxisId="right"
                         type="monotone"
                         dataKey="avgDO"
-                        stroke="#10b981"
-                        fillOpacity={1}
-                        fill="url(#colorDO)"
-                        strokeWidth={2}
-                        activeDot={{ r: 6 }}
+                        stroke="#38bdf8"
+                        strokeWidth={3}
+                        dot={{ r: 5, fill: '#38bdf8', stroke: '#fff', strokeWidth: 1.5 }}
+                        activeDot={{ r: 7, fill: '#38bdf8', stroke: '#fff', strokeWidth: 2 }}
                         name="Avg DO (mg/L)"
                     />
                 </LineChart>
@@ -327,6 +325,22 @@ const Dashboard = () => {
         };
     }, []);
 
+    const dynamicChartData = (() => {
+        if (!isLoading && stat?.weekly_ph_do && Array.isArray(stat.weekly_ph_do)) {
+            // Map backend data to a lookup by day
+            const lookup = Object.fromEntries(
+                stat.weekly_ph_do.map(d => [d.date, {
+                    name: d.date,
+                    avgPH: d.avgPH ? parseFloat(d.avgPH) : 0,
+                    avgDO: d.avgDO ? parseFloat(d.avgDO) : 0,
+                }])
+            );
+            // Ensure all days are present, fill missing with 0
+            return WEEK_DAYS.map(day => lookup[day] || { name: day, avgPH: 0, avgDO: 0 });
+        }
+        return chartData;
+    })();
+
     return (
         <div className="min-h-screen bg-gray-50 p-4 md:p-6">
             <div className="max-w-7xl mx-auto">
@@ -338,7 +352,7 @@ const Dashboard = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                     <div className="lg:col-span-2">
-                        <DashboardGraph />
+                        <DashboardGraph chartData={dynamicChartData} />
                     </div>
                     <div className="space-y-6">
                         <AlertsTable alerts={stat?.latest_alerts || []} isLoading={isLoading} />
@@ -346,7 +360,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div className="lg:col-span-2">
+                    <div className="lg:col-span-3">
                         <TipsTable tips={stat?.latest_tasks || []} isLoading={isLoading} />
                     </div>
                 </div>

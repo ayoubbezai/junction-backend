@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Sensor_reading;
+use App\Events\StatUpdated;
+
 
 
 class Sensor_readingController extends Controller
@@ -83,6 +85,8 @@ class Sensor_readingController extends Controller
             ]);
 
             $reading = Sensor_reading::create($data);
+            broadcast(new StatUpdated());
+
 
             return response()->json([
                 'success' => true,

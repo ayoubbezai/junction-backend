@@ -9,20 +9,28 @@ use App\Models\Region;
 use App\Models\Sensor;
 use App\Models\Alert;
 use App\Events\StatUpdated;
-
-
 use App\Models\Tip;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class StatController extends Controller
 {
     public function getStat(){
         try{
+            // Get last 7 days' average pH and DO, grouped by day of week (Mon, Tue, ...)
+            $weeklyPhDo = \App\Models\Sensor_reading::selectRaw("DATE_FORMAT(created_at, '%a') as date, AVG(ph) as avgPH, AVG(dissolved_oxygen) as avgDO")
+                ->where('created_at', '>=', Carbon::now()->subDays(6)->startOfDay())
+                ->groupBy(DB::raw("DATE_FORMAT(created_at, '%a')"))
+                ->orderBy(DB::raw("MIN(created_at)"), 'asc')
+                ->get();
+
             $data = [
                 'ponds_count' => Pond::count(),
                 'regions_count' => Region::count(),
                 'sensors_count' => Sensor::count(),
-                'latest_alerts' => Alert::with('pond')->latest()->limit(5)->get(),
+                'latest_alerts' => Alert::with('pond')->latest()->limit(3)->get(),
                 'latest_tasks' => Tip::with('pond')->latest()->limit(5)->get(),
+                'weekly_ph_do' => $weeklyPhDo,
             ];
             
             event(new StatUpdated($data));
