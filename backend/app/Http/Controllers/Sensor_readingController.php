@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sensor_reading;
+
 
 class Sensor_readingController extends Controller
 {
@@ -19,7 +21,7 @@ class Sensor_readingController extends Controller
                 "search" => "nullable|string|max:255",
             ]);
 
-            $sensors_reading = Sensors_reading::with('sensor');
+            $sensors_reading = Sensor_reading::with('sensor');
             $perPage = $request->get('per_page', 15);
             $perPage = max(1, min($perPage, 100));
 
@@ -66,7 +68,35 @@ class Sensor_readingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $data = $request->validate([
+                'sensor_id' => 'required|exists:sensor,id',
+                'timestamp' => 'required|date',
+                'value' => 'required|numeric',
+                'unit' => 'required|string|max:255',
+            ]);
+
+            $reading = Sensor_reading::create($data);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Sensor reading created successfully.',
+                'data' => $reading
+            ], 201);
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed.',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to create sensor reading.',
+                'errors' => [$e->getMessage()]
+            ], 500);
+        }
     }
 
     /**
