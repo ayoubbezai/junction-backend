@@ -91,7 +91,7 @@ class PondController extends Controller
                 'location' => 'required|string|max:255',
                 'size' => 'required|string|max:255',
                 'pond_name' => 'required|string|max:255',
-                'safe_range' => 'required|array'
+                'safe_range' => 'nullable|array'
             ]);
 
             $pond = Pond::create($data);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Sensor_reading;
 
 
@@ -11,7 +12,7 @@ class Sensor_readingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
             
@@ -104,7 +105,25 @@ class Sensor_readingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            $reading = Sensor_reading::with('sensor')->findOrFail($id);
+            return response()->json([
+                'success' => true,
+                'message' => 'Sensor reading retrieved successfully.',
+                'data' => $reading
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sensor reading not found.'
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to retrieve sensor reading.',
+                'errors' => [$e->getMessage()]
+            ], 500);
+        }
     }
 
     /**
@@ -112,7 +131,38 @@ class Sensor_readingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $reading = Sensor_reading::findOrFail($id);
+            $data = $request->validate([
+                'sensor_id' => 'sometimes|exists:sensor,id',
+                'timestamp' => 'sometimes|date',
+                'value' => 'sometimes|numeric',
+                'unit' => 'sometimes|string|max:255',
+            ]);
+            $reading->update($data);
+            return response()->json([
+                'success' => true,
+                'message' => 'Sensor reading updated successfully.',
+                'data' => $reading->fresh('sensor')
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sensor reading not found.'
+            ], 404);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed.',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to update sensor reading.',
+                'errors' => [$e->getMessage()]
+            ], 500);
+        }
     }
 
     /**
@@ -120,6 +170,24 @@ class Sensor_readingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $reading = Sensor_reading::findOrFail($id);
+            $reading->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'Sensor reading deleted successfully.'
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sensor reading not found.'
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to delete sensor reading.',
+                'errors' => [$e->getMessage()]
+            ], 500);
+        }
     }
 }
