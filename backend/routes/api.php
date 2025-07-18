@@ -9,3 +9,4 @@ Route::apiResource('/ponds', App\Http\Controllers\PondController::class);
 Route::apiResource('/sensors', App\Http\Controllers\SensorController::class);
 Route::apiResource('/sensor_reading', App\Http\Controllers\Sensor_readingController::class);
 Route::apiResource('/alerts', App\Http\Controllers\AlertController::class);
+Route::apiResource('/tips', App\Http\Controllers\TipController::class);
