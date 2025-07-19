@@ -11,3 +11,4 @@ Route::apiResource('/sensor_reading', App\Http\Controllers\Sensor_readingControl
 Route::apiResource('/alerts', App\Http\Controllers\AlertController::class);
 Route::apiResource('/tips', App\Http\Controllers\TipController::class);
 Route::get('/stat',[App\Http\Controllers\StatController::class,'getStat']);
+Route::post('/sms', [App\Http\Controllers\SMSController2::class, 'send']);

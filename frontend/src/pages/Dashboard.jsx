@@ -75,26 +75,26 @@ const AlertBadge = ({ level }) => {
 };
 
 const AlertsTable = ({ alerts = [], isLoading }) => (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-xs overflow-hidden">
-        <div className="px-5 py-4 border-b border-gray-100">
-            <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                <Bell className="mr-2 text-blue-600" size={18} /> Recent Alerts
+    <div className="bg-white rounded-xl border-l-4 border-blue-500 border border-gray-200 shadow-xs overflow-hidden mb-6">
+        <div className="px-6 py-4 border-b border-gray-100">
+            <h3 className="text-lg font-bold text-blue-700 flex items-center">
+                <Bell className="mr-2 text-blue-500" size={22} /> Recent Alerts
             </h3>
         </div>
         <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
+            <table className="min-w-full text-sm">
                 <thead className="bg-gray-50">
                     <tr>
-                        <th scope="col" className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
-                        <th scope="col" className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Level</th>
-                        <th scope="col" className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pond</th>
-                        <th scope="col" className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs">Message</th>
+                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs">Level</th>
+                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs">Pond</th>
+                        <th scope="col" className="px-6 py-2 text-right font-semibold text-gray-500 uppercase tracking-wider text-xs">Time</th>
                     </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-100">
                     {isLoading ? (
                         <tr>
-                            <td colSpan={4} className="px-5 py-4 text-center text-sm text-gray-500">
+                            <td colSpan={4} className="px-6 py-4 text-center text-sm text-gray-500">
                                 <div className="animate-pulse flex justify-center">
                                     <div className="h-4 w-3/4 bg-gray-100 rounded"></div>
                                 </div>
@@ -102,21 +102,31 @@ const AlertsTable = ({ alerts = [], isLoading }) => (
                         </tr>
                     ) : alerts.length === 0 ? (
                         <tr>
-                            <td colSpan={4} className="px-5 py-4 text-center text-sm text-gray-500">No alerts found</td>
+                            <td colSpan={4} className="px-6 py-4 text-center text-sm text-gray-500">No alerts found</td>
                         </tr>
                     ) : (
                         alerts.map((alert, idx) => (
-                            <tr key={alert.id || idx} className="hover:bg-gray-50 transition-colors">
-                                <td className="px-5 py-4 whitespace-normal max-w-xs md:max-w-sm lg:max-w-md text-sm font-medium text-gray-900">
+                            <tr key={alert.id || idx} className="hover:bg-blue-50/40 transition-colors">
+                                <td className="px-6 py-3 whitespace-normal max-w-xs md:max-w-sm lg:max-w-md text-base font-medium text-gray-900">
                                     {alert.message}
                                 </td>
-                                <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <AlertBadge level={alert.level} />
+                                <td className="px-6 py-3 whitespace-nowrap">
+                                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${
+                                        alert.level?.toLowerCase() === 'critical'
+                                            ? 'bg-red-100 text-red-700'
+                                            : alert.level?.toLowerCase() === 'warning'
+                                            ? 'bg-amber-100 text-amber-700'
+                                            : alert.level?.toLowerCase() === 'info'
+                                            ? 'bg-blue-100 text-blue-700'
+                                            : 'bg-gray-100 text-gray-700'
+                                    }`}>
+                                        {alert.level}
+                                    </span>
                                 </td>
-                                <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td className="px-6 py-3 whitespace-nowrap text-gray-700 text-sm">
                                     {alert.pond?.pond_name || '—'}
                                 </td>
-                                <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td className="px-6 py-3 whitespace-nowrap text-right text-xs font-mono text-gray-500">
                                     {alert.created_at ? new Date(alert.created_at).toLocaleString() : '—'}
                                 </td>
                             </tr>
@@ -161,25 +171,25 @@ const TipRow = ({ tip }) => {
 };
 
 const TipsTable = ({ tips = [], isLoading }) => (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-xs overflow-hidden">
-        <div className="px-5 py-4 border-b border-gray-100">
-            <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                <Info className="mr-2 text-blue-600" size={18} /> Recent Tips
+    <div className="bg-white rounded-xl border-l-4 border-sky-400 border border-gray-200 shadow-xs overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-100">
+            <h3 className="text-lg font-bold text-sky-700 flex items-center">
+                <Info className="mr-2 text-sky-400" size={22} /> Recent Tips
             </h3>
         </div>
         <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
+            <table className="min-w-full text-sm">
                 <thead className="bg-gray-50">
                     <tr>
-                        <th scope="col" className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/3">Tip</th>
-                        <th scope="col" className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pond</th>
-                        <th scope="col" className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs w-2/3">Tip</th>
+                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs">Pond</th>
+                        <th scope="col" className="px-6 py-2 text-right font-semibold text-gray-500 uppercase tracking-wider text-xs">Time</th>
                     </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-100">
                     {isLoading ? (
                         <tr>
-                            <td colSpan={3} className="px-5 py-4 text-center text-sm text-gray-500">
+                            <td colSpan={3} className="px-6 py-4 text-center text-sm text-gray-500">
                                 <div className="animate-pulse flex justify-center">
                                     <div className="h-4 w-3/4 bg-gray-100 rounded"></div>
                                 </div>
@@ -187,10 +197,42 @@ const TipsTable = ({ tips = [], isLoading }) => (
                         </tr>
                     ) : tips.length === 0 ? (
                         <tr>
-                            <td colSpan={3} className="px-5 py-4 text-center text-sm text-gray-500">No tips available</td>
+                            <td colSpan={3} className="px-6 py-4 text-center text-sm text-gray-500">No tips available</td>
                         </tr>
                     ) : (
-                        tips.map((tip, idx) => <TipRow key={tip.id || idx} tip={tip} />)
+                        tips.map((tip, idx) => (
+                            <tr key={tip.id || idx} className="hover:bg-sky-50/40 transition-colors">
+                                <td className="px-6 py-3 text-base text-gray-900 font-medium">
+                                    <div className="whitespace-pre-line">
+                                        {(() => {
+                                            const maxChars = 120;
+                                            const message = tip.message || tip.tip || '—';
+                                            const isLong = message.length > maxChars;
+                                            const displayText = !tip.expanded && isLong ? message.slice(0, maxChars) + '...' : message;
+                                            return (
+                                                <>
+                                                    {displayText}
+                                                    {isLong && (
+                                                        <button
+                                                            className="ml-2 text-sky-500 hover:text-sky-700 text-xs font-semibold"
+                                                            onClick={() => tip.setExpanded && tip.setExpanded(e => !e)}
+                                                        >
+                                                            {tip.expanded ? 'Show less' : 'Show more'}
+                                                        </button>
+                                                    )}
+                                                </>
+                                            );
+                                        })()}
+                                    </div>
+                                </td>
+                                <td className="px-6 py-3 whitespace-nowrap text-gray-700 text-sm">
+                                    {tip.pond?.pond_name || '—'}
+                                </td>
+                                <td className="px-6 py-3 whitespace-nowrap text-right text-xs font-mono text-gray-500">
+                                    {tip.created_at ? new Date(tip.created_at).toLocaleString() : '—'}
+                                </td>
+                            </tr>
+                        ))
                     )}
                 </tbody>
             </table>

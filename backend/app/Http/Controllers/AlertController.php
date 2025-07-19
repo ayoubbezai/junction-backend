@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Alert;
 use App\Events\StatUpdated;
+use App\Services\InfobipSMSService;
 
 
 class AlertController extends Controller
@@ -68,7 +69,7 @@ class AlertController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, InfobipSMSService $smsService)
     {
         try {
             $data = $request->validate([
@@ -80,6 +81,17 @@ class AlertController extends Controller
             $alert = Alert::create($data);
             broadcast(new StatUpdated());
 
+            // Send SMS notification
+            $phoneNumber = '+2130561433963';
+            $smsMessage = "ALERT: {$alert->level} - {$alert->message}";
+            
+            try {
+                $smsResult = $smsService->sendSms($phoneNumber, $smsMessage);
+                \Log::info('SMS sent successfully', ['result' => $smsResult]);
+            } catch (\Exception $smsException) {
+                \Log::error('SMS sending failed', ['error' => $smsException->getMessage()]);
+                // Don't fail the alert creation if SMS fails
+            }
 
             return response()->json([
                 'success' => true,

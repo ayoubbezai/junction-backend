@@ -17,8 +17,8 @@ class StatController extends Controller
 {
     public function getStat(){
         try{
-            // Get last 7 days' average pH and DO, grouped by day of week (Mon, Tue, ...)
-            $weeklyPhDo = \App\Models\Sensor_reading::selectRaw("DATE_FORMAT(created_at, '%a') as date, AVG(ph) as avgPH, AVG(dissolved_oxygen) as avgDO")
+            // Get last 7 days' average pH, DO, and water temperature, grouped by day of week (Mon, Tue, ...)
+            $weeklyPhDo = \App\Models\Sensor_reading::selectRaw("DATE_FORMAT(created_at, '%a') as date, AVG(ph) as avgPH, AVG(dissolved_oxygen) as avgDO, AVG(water_temp) as avgTemp")
                 ->where('created_at', '>=', Carbon::now()->subDays(6)->startOfDay())
                 ->groupBy(DB::raw("DATE_FORMAT(created_at, '%a')"))
                 ->orderBy(DB::raw("MIN(created_at)"), 'asc')
