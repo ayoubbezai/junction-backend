@@ -33,7 +33,6 @@ class StatController extends Controller
                 'weekly_ph_do' => $weeklyPhDo,
             ];
             
-            event(new StatUpdated($data));
 
             return response()->json([
                 'success' => true,

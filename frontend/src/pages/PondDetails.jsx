@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { sensorServices } from '../services/SensorServices';
 import { pondServices } from '../services/PondServices';
+import { useSensorReadings } from '../hooks/useSensorReadings';
 import { MapPin, Thermometer, Droplets, Activity, Users, Database, CheckCircle, AlertTriangle, Info } from 'lucide-react';
 
 const statusColor = (status) => {
@@ -22,6 +23,13 @@ const PondDetails = () => {
     const [readingTotalPages, setReadingTotalPages] = useState(1);
     const [readingTotalItems, setReadingTotalItems] = useState(0);
     const [readingPerPage, setReadingPerPage] = useState(15);
+    const [pendingReadings, setPendingReadings] = useState([]);
+
+    // Real-time sensor readings
+    const { newReading, isConnected } = useSensorReadings(pondId);
+    const [highlightedReadingId, setHighlightedReadingId] = useState(null);
+    const [showToast, setShowToast] = useState(false);
+    const [toastMsg, setToastMsg] = useState('');
 
     useEffect(() => {
         fetchPond();
@@ -29,6 +37,26 @@ const PondDetails = () => {
         fetchReadings(1);
         // eslint-disable-next-line
     }, [pondId]);
+
+    // Log readings array after every update
+    useEffect(() => {
+        console.log('[Table] Current readings:', readings);
+    }, [readings]);
+
+    // Handle real-time updates (simple: unshift new reading to readings)
+    useEffect(() => {
+        if (!newReading) return;
+        const readingObj = newReading?.data?.reading || newReading?.reading || newReading;
+        setReadings(prev => {
+            if (prev.some(r => r.id === readingObj.id)) return prev;
+            const arr = prev.slice();
+            arr.unshift(readingObj);
+            return arr.length > readingPerPage ? arr.slice(0, readingPerPage) : arr;
+        });
+        setHighlightedReadingId(readingObj.id);
+        const timeout = setTimeout(() => setHighlightedReadingId(null), 3000);
+        return () => clearTimeout(timeout);
+    }, [newReading, readingPerPage]);
 
     const fetchPond = async () => {
         const res = await pondServices.getPondById(pondId);
@@ -47,7 +75,13 @@ const PondDetails = () => {
         try {
             const res = await sensorServices.getSensorReadingsByPondId(pondId, page);
             if (res.success && res.data) {
-                setReadings(res.data.items || []);
+                let items = res.data.items || [];
+                // Only merge pendingReadings on the first page
+                if (page === 1 && pendingReadings.length > 0) {
+                    const ids = new Set(pendingReadings.map(r => r.id));
+                    items = [...pendingReadings, ...items.filter(r => !ids.has(r.id))];
+                }
+                setReadings(items);
                 setReadingPage(res.data.current_page || 1);
                 setReadingTotalPages(res.data.total_pages || 1);
                 setReadingTotalItems(res.data.total_items || 0);
@@ -141,11 +175,22 @@ const PondDetails = () => {
                     )}
                 </div>
                 {/* Sensor Readings Table */}
+                {showToast && (
+                    <div className="fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded shadow-lg z-50">
+                        {toastMsg}
+                    </div>
+                )}
                 <div className="bg-white rounded-xl shadow p-6 border border-gray-100 mt-8">
-                    <div className="flex items-center mb-4">
-                        <Activity className="w-5 h-5 mr-2 text-blue-700" />
-                        <h3 className="text-xl font-bold text-blue-700">Sensor Readings</h3>
-                        <Info className="w-4 h-4 ml-2 text-gray-400" title="Historical sensor readings for this pond." />
+                    <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center">
+                            <Activity className="w-5 h-5 mr-2 text-blue-700" />
+                            <h3 className="text-xl font-bold text-blue-700">Sensor Readings</h3>
+                            <Info className="w-4 h-4 ml-2 text-gray-400" title="Historical sensor readings for this pond." />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} title={isConnected ? 'Real-time connected' : 'Real-time disconnected'}></div>
+                            <span className="text-xs text-gray-500">{isConnected ? 'Live' : 'Offline'}</span>
+                        </div>
                     </div>
                     {readingLoading ? (
                         <div>Loading readings...</div>
@@ -170,7 +215,16 @@ const PondDetails = () => {
                                         <tr key={reading.id} className={
                                             `border-t transition-colors ${idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-blue-50`
                                         }>
-                                            <td className="px-4 py-2" title={reading.created_at}>{new Date(reading.created_at).toLocaleString()}</td>
+                                            <td className="px-4 py-2 flex items-center">
+                                                {highlightedReadingId === reading.id && (
+                                                    <span className="inline-block mr-2 px-2 py-1 bg-green-500 text-white text-xs rounded-full animate-bounce">
+                                                        NEW
+                                                    </span>
+                                                )}
+                                                <span title={reading.created_at || reading.date}>
+                                                    {new Date(reading.created_at || reading.date).toLocaleString()}
+                                                </span>
+                                            </td>
                                             <td className="px-4 py-2" title={reading.ph ?? ''}>{reading.ph ?? '-'}</td>
                                             <td className="px-4 py-2" title={reading.dissolved_oxygen ?? ''}>{reading.dissolved_oxygen ?? '-'}</td>
                                             <td className="px-4 py-2" title={reading.water_temp ?? ''}>{reading.water_temp ?? '-'}</td>

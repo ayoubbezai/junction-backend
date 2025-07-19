@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Sensor_reading;
 use App\Events\StatUpdated;
+use App\Events\SensorReadingCreated;
 
 
 
@@ -44,7 +45,7 @@ class Sensor_readingController extends Controller
             }
 
 
-            $paginatedSensors = $sensors_reading->paginate($perPage);
+            $paginatedSensors = $sensors_reading->orderBy('created_at', 'desc')->paginate($perPage);
 
             
             return response()->json([
@@ -91,6 +92,7 @@ class Sensor_readingController extends Controller
 
             $reading = Sensor_reading::create($data);
             broadcast(new StatUpdated());
+            broadcast(new SensorReadingCreated($reading));
 
 
             return response()->json([
