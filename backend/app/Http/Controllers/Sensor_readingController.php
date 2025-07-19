@@ -38,6 +38,11 @@ class Sensor_readingController extends Controller
                 }
             }
 
+            // Filter by pond_id
+            if ($request->filled('pond_id')) {
+                $sensors_reading->where('pond_id', $request->get('pond_id'));
+            }
+
 
             $paginatedSensors = $sensors_reading->paginate($perPage);
 

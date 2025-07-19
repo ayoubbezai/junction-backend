@@ -28,7 +28,7 @@ class StatController extends Controller
                 'ponds_count' => Pond::count(),
                 'regions_count' => Region::count(),
                 'sensors_count' => Sensor::count(),
-                'latest_alerts' => Alert::with('pond')->latest()->limit(3)->get(),
+                'latest_alerts' => Alert::with('pond')->latest()->limit(9)->get(),
                 'latest_tasks' => Tip::with('pond')->latest()->limit(5)->get(),
                 'weekly_ph_do' => $weeklyPhDo,
             ];

@@ -22,7 +22,8 @@ class SensorController extends Controller
                 "per_page" => "nullable|integer|min:1|max:100",
                 "page" => "nullable|integer|min:1",
                 "search" => "nullable|string|max:255",
-                "status" => "nullable|in:active,inactive,maintenance"
+                "status" => "nullable|in:active,inactive,maintenance",
+                "pond_id" => "nullable|exists:ponds,id",
             ]);
 
             $sensors = Sensor::with('pond');
@@ -39,10 +40,14 @@ class SensorController extends Controller
                     });
                 }
             }
+            
             if($request->filled("status")){
                 $sensors->where("status", $request->get("status"));
             }
 
+            if($request->filled("pond_id")){
+                $sensors->where("pond_id", $request->get("pond_id"));
+            }
 
             $paginatedSensors = $sensors->paginate($perPage);
 

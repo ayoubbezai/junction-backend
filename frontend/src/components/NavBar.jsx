@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, Settings, User, Waves, Bell, FileText } from 'lucide-react'
+import { LayoutDashboard, Settings, User, Waves, Bell, FileText, Lightbulb } from 'lucide-react'
 import fishtaLogo from '../assets/fishtaLogo.webp'
 
 const navLinks = [
@@ -20,15 +20,16 @@ const navLinks = [
         label: 'Alerts',
     },
     {
+        to: '/tips',
+        icon: Lightbulb,
+        label: 'Tips',
+    },
+    {
         to: '/rapports',
         icon: FileText,
         label: 'Rapports',
     },
-    {
-        to: '/settings',
-        icon: Settings,
-        label: 'Settings',
-    },
+
 ]
 
 const NavBar = () => {

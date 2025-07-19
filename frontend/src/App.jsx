@@ -2,6 +2,11 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Dashboard from './pages/Dashboard'
+import Ponds from './pages/Ponds'
+import Alerts from './pages/Alerts'
+import Reports from './pages/Reports'
+import Tips from './pages/Tips'
+import PondDetails from './pages/PondDetails';
 import { Button } from './components/ui/button'
 
 const App = () => {
@@ -17,6 +22,11 @@ const App = () => {
             </>
           } />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/ponds" element={<Ponds />} />
+          <Route path="/ponds/:pondId" element={<PondDetails />} />
+          <Route path="/alerts" element={<Alerts />} />
+          <Route path="/rapports" element={<Reports />} />
+          <Route path="/tips" element={<Tips />} />
         </Routes>
       </div>
     </BrowserRouter>

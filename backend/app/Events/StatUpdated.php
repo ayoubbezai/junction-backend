@@ -28,12 +28,13 @@ class StatUpdated implements ShouldBroadcast
         ->groupBy(DB::raw("DATE_FORMAT(created_at, '%a')"))
         ->orderBy(DB::raw("MIN(created_at)"), 'asc')
         ->get();
+        
         $this->data = [
             'ponds_count' => Pond::count(),
             'regions_count' => Region::count(),
             'sensors_count' => Sensor::count(),
             'latest_alerts' => Alert::with('pond')->latest()->limit(5)->get(),
-            'latest_tasks' => Tip::with('pond')->latest()->limit(5)->get(),
+            'latest_tips' => Tip::with('pond')->latest()->limit(5)->get(),
             'weekly_ph_do' => $weeklyPhDo,
         ];
     }

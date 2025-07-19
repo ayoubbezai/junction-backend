@@ -2,54 +2,72 @@ import React, { useEffect, useState } from 'react';
 import { User, Map, Cpu, Bell, Info } from 'lucide-react';
 import { StatServices } from '../services/StatServices';
 import initializePusher from '../lib/echo';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Area } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const StatCard = ({ label, value, icon, isLoading = false }) => (
-    <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl border border-gray-100 shadow-xs hover:shadow-sm transition-all duration-200 p-5 flex flex-col h-full">
-        <div className="flex justify-between items-start mb-3">
-            <div className="p-2 rounded-lg bg-blue-50/50 border border-blue-100">{icon}</div>
+// Clean Stat Card Component with Colors
+const StatCard = ({ label, value, icon, isLoading = false, color = "blue" }) => {
+    const colorClasses = {
+        blue: "bg-blue-50 text-blue-600 border-blue-200",
+        green: "bg-green-50 text-green-600 border-green-200",
+        purple: "bg-purple-50 text-purple-600 border-purple-200",
+        orange: "bg-orange-50 text-orange-600 border-orange-200"
+    };
+
+    const colorStyle = colorClasses[color];
+
+    return (
+        <div className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 p-4 group h-full">
+            <div className="flex items-center justify-between mb-3">
+                <div className={`p-2 rounded-lg border ${colorStyle} group-hover:scale-105 transition-transform duration-200`}>
+                    {icon}
+                </div>
+            </div>
+            <div>
+                <p className="text-xs font-medium text-gray-600 mb-1">{label}</p>
+                {isLoading ? (
+                    <div className="h-6 w-16 bg-gray-200 rounded animate-pulse"></div>
+                ) : (
+                    <p className="text-xl font-bold text-gray-900">{value}</p>
+                )}
+            </div>
         </div>
-        <div>
-            <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">{label}</p>
-            {isLoading ? (
-                <div className="h-8 w-3/4 bg-gray-100 rounded-lg animate-pulse"></div>
-            ) : (
-                <p className="text-2xl font-bold text-gray-900">{value}</p>
-            )}
-        </div>
-    </div>
-);
+    );
+};
 
 const StatCards = ({ stat, isLoading }) => {
     const stats = [
         {
             label: 'Total Ponds',
-            value: stat?.ponds_count ?? '—',
-            icon: <Map className="text-blue-600" size={20} />,
+            value: stat?.ponds_count ?? '0',
+            icon: <Map size={18} />,
+            color: 'blue'
         },
         {
             label: 'Total Regions',
-            value: stat?.regions_count ?? '—',
-            icon: <User className="text-blue-600" size={20} />,
+            value: stat?.regions_count ?? '0',
+            icon: <User size={18} />,
+            color: 'green'
         },
         {
-            label: 'Total Sensors',
-            value: stat?.sensors_count ?? '—',
-            icon: <Cpu className="text-blue-600" size={20} />,
+            label: 'Active Sensors',
+            value: stat?.sensors_count ?? '0',
+            icon: <Cpu size={18} />,
+            color: 'purple'
         },
         {
             label: 'Active Alerts',
-            value: stat?.latest_alerts?.length ?? '—',
-            icon: <Bell className="text-blue-600" size={20} />,
+            value: stat?.latest_alerts?.length ?? '0',
+            icon: <Bell size={18} />,
+            color: 'orange'
         },
     ];
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {stats.map((stat, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            {stats.map((statItem, index) => (
                 <StatCard
                     key={`stat-card-${index}`}
-                    {...stat}
+                    {...statItem}
                     isLoading={isLoading}
                 />
             ))}
@@ -57,77 +75,80 @@ const StatCards = ({ stat, isLoading }) => {
     );
 };
 
+// Clean Alert Badge Component
 const AlertBadge = ({ level }) => {
     const colorMap = {
-        critical: 'bg-red-100 text-red-800',
-        warning: 'bg-amber-100 text-amber-800',
-        info: 'bg-blue-100 text-blue-800',
-        default: 'bg-gray-100 text-gray-800'
+        critical: 'bg-red-100 text-red-700',
+        warning: 'bg-yellow-100 text-yellow-700',
+        info: 'bg-blue-100 text-blue-700',
+        default: 'bg-gray-100 text-gray-700'
     };
 
     const color = colorMap[level?.toLowerCase()] || colorMap.default;
 
     return (
-        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${color}`}>
+        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${color}`}>
             {level}
         </span>
     );
 };
 
+// Clean Alerts Table Component with Better Message Display
 const AlertsTable = ({ alerts = [], isLoading }) => (
-    <div className="bg-white rounded-xl border-l-4 border-blue-500 border border-gray-200 shadow-xs overflow-hidden mb-6">
-        <div className="px-6 py-4 border-b border-gray-100">
-            <h3 className="text-lg font-bold text-blue-700 flex items-center">
-                <Bell className="mr-2 text-blue-500" size={22} /> Recent Alerts
-            </h3>
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden h-full">
+        <div className="px-3 py-2 border-b border-gray-100 bg-gray-50">
+            <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                    <Bell className="text-gray-600 mr-2" size={14} />
+                    <h3 className="text-xs font-semibold text-gray-900">Recent Alerts</h3>
+                </div>
+                <div className="text-right">
+                    <p className="text-sm font-bold text-gray-900">{alerts.length}</p>
+                </div>
+            </div>
         </div>
         <div className="overflow-x-auto">
-            <table className="min-w-full text-sm">
+            <table className="min-w-full">
                 <thead className="bg-gray-50">
                     <tr>
-                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs">Message</th>
-                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs">Level</th>
-                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs">Pond</th>
-                        <th scope="col" className="px-6 py-2 text-right font-semibold text-gray-500 uppercase tracking-wider text-xs">Time</th>
+                        <th scope="col" className="px-3 py-1 text-left text-xs font-medium text-gray-600 uppercase tracking-wider w-3/5">Message</th>
+                        <th scope="col" className="px-3 py-1 text-left text-xs font-medium text-gray-600 uppercase tracking-wider w-1/5">Level</th>
+                        <th scope="col" className="px-3 py-1 text-right text-xs font-medium text-gray-600 uppercase tracking-wider w-1/5">Time</th>
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-100">
                     {isLoading ? (
                         <tr>
-                            <td colSpan={4} className="px-6 py-4 text-center text-sm text-gray-500">
-                                <div className="animate-pulse flex justify-center">
-                                    <div className="h-4 w-3/4 bg-gray-100 rounded"></div>
+                            <td colSpan={3} className="px-3 py-4 text-center">
+                                <div className="flex items-center justify-center">
+                                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600"></div>
+                                    <span className="ml-2 text-xs text-gray-500">Loading...</span>
                                 </div>
                             </td>
                         </tr>
                     ) : alerts.length === 0 ? (
                         <tr>
-                            <td colSpan={4} className="px-6 py-4 text-center text-sm text-gray-500">No alerts found</td>
+                            <td colSpan={3} className="px-3 py-4 text-center">
+                                <p className="text-xs text-gray-500">No alerts found</p>
+                            </td>
                         </tr>
                     ) : (
-                        alerts.map((alert, idx) => (
-                            <tr key={alert.id || idx} className="hover:bg-blue-50/40 transition-colors">
-                                <td className="px-6 py-3 whitespace-normal max-w-xs md:max-w-sm lg:max-w-md text-base font-medium text-gray-900">
-                                    {alert.message}
+                        alerts.slice(0, 9).map((alert, idx) => (
+                            <tr key={alert.id || idx} className="hover:bg-gray-50 transition-colors duration-150">
+                                <td className="px-3 py-2">
+                                    <div className="max-w-full">
+                                        <p className="text-xs text-gray-900 leading-tight" title={alert.message}>
+                                            {alert.message}
+                                        </p>
+                                    </div>
                                 </td>
-                                <td className="px-6 py-3 whitespace-nowrap">
-                                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${
-                                        alert.level?.toLowerCase() === 'critical'
-                                            ? 'bg-red-100 text-red-700'
-                                            : alert.level?.toLowerCase() === 'warning'
-                                            ? 'bg-amber-100 text-amber-700'
-                                            : alert.level?.toLowerCase() === 'info'
-                                            ? 'bg-blue-100 text-blue-700'
-                                            : 'bg-gray-100 text-gray-700'
-                                    }`}>
-                                        {alert.level}
+                                <td className="px-3 py-2 whitespace-nowrap">
+                                    <AlertBadge level={alert.level} />
+                                </td>
+                                <td className="px-3 py-2 whitespace-nowrap text-right">
+                                    <span className="text-xs text-gray-500 font-mono">
+                                        {alert.created_at ? new Date(alert.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '—'}
                                     </span>
-                                </td>
-                                <td className="px-6 py-3 whitespace-nowrap text-gray-700 text-sm">
-                                    {alert.pond?.pond_name || '—'}
-                                </td>
-                                <td className="px-6 py-3 whitespace-nowrap text-right text-xs font-mono text-gray-500">
-                                    {alert.created_at ? new Date(alert.created_at).toLocaleString() : '—'}
                                 </td>
                             </tr>
                         ))
@@ -138,100 +159,87 @@ const AlertsTable = ({ alerts = [], isLoading }) => (
     </div>
 );
 
-const TipRow = ({ tip }) => {
-    const [expanded, setExpanded] = React.useState(false);
-    const maxChars = 120;
+// Tip Row Component with Expandable Text
+const TipRow = ({ tip, index }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const maxChars = 80;
     const message = tip.message || tip.tip || '—';
     const isLong = message.length > maxChars;
-    const displayText = !expanded && isLong ? message.slice(0, maxChars) + '...' : message;
+    const displayText = !isExpanded && isLong ? message.slice(0, maxChars) + '...' : message;
 
     return (
-        <tr className="hover:bg-gray-50 transition-colors">
-            <td className="px-5 py-4 text-sm text-gray-900">
-                <div className="whitespace-pre-line">
-                    {displayText}
-                    {isLong && (
-                        <button
-                            className="ml-2 text-blue-600 hover:text-blue-800 text-xs font-medium"
-                            onClick={() => setExpanded(e => !e)}
-                        >
-                            {expanded ? 'Show less' : 'Show more'}
-                        </button>
-                    )}
+        <tr className="hover:bg-gray-50 transition-colors duration-150">
+            <td className="px-4 py-3">
+                <div className="max-w-lg">
+                    <p className="text-sm text-gray-900 leading-tight">
+                        {displayText}
+                        {isLong && (
+                            <button
+                                className="ml-2 text-blue-600 hover:text-blue-800 text-xs font-medium underline"
+                                onClick={() => setIsExpanded(!isExpanded)}
+                            >
+                                {isExpanded ? 'See less' : 'See more'}
+                            </button>
+                        )}
+                    </p>
                 </div>
             </td>
-            <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-500">
-                {tip.pond?.pond_name || '—'}
+            <td className="px-4 py-3 whitespace-nowrap">
+                <span className="text-sm text-gray-700">
+                    {tip.pond?.pond_name || '—'}
+                </span>
             </td>
-            <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-500">
-                {tip.created_at ? new Date(tip.created_at).toLocaleString() : '—'}
+            <td className="px-4 py-3 whitespace-nowrap text-right">
+                <span className="text-xs text-gray-500 font-mono">
+                    {tip.created_at ? new Date(tip.created_at).toLocaleString() : '—'}
+                </span>
             </td>
         </tr>
     );
 };
 
+// Clean Tips Table Component with Expandable Text
 const TipsTable = ({ tips = [], isLoading }) => (
-    <div className="bg-white rounded-xl border-l-4 border-sky-400 border border-gray-200 shadow-xs overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-100">
-            <h3 className="text-lg font-bold text-sky-700 flex items-center">
-                <Info className="mr-2 text-sky-400" size={22} /> Recent Tips
-            </h3>
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+        <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
+            <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                    <Info className="text-gray-600 mr-2" size={16} />
+                    <h3 className="text-sm font-semibold text-gray-900">Recent Tips</h3>
+                </div>
+                <div className="text-right">
+                    <p className="text-lg font-bold text-gray-900">{tips.length}</p>
+                </div>
+            </div>
         </div>
         <div className="overflow-x-auto">
-            <table className="min-w-full text-sm">
+            <table className="min-w-full">
                 <thead className="bg-gray-50">
                     <tr>
-                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs w-2/3">Tip</th>
-                        <th scope="col" className="px-6 py-2 text-left font-semibold text-gray-500 uppercase tracking-wider text-xs">Pond</th>
-                        <th scope="col" className="px-6 py-2 text-right font-semibold text-gray-500 uppercase tracking-wider text-xs">Time</th>
+                        <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-600 uppercase tracking-wider w-2/3">Tip</th>
+                        <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Pond</th>
+                        <th scope="col" className="px-4 py-2 text-right text-xs font-medium text-gray-600 uppercase tracking-wider">Time</th>
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-100">
                     {isLoading ? (
                         <tr>
-                            <td colSpan={3} className="px-6 py-4 text-center text-sm text-gray-500">
-                                <div className="animate-pulse flex justify-center">
-                                    <div className="h-4 w-3/4 bg-gray-100 rounded"></div>
+                            <td colSpan={3} className="px-4 py-6 text-center">
+                                <div className="flex items-center justify-center">
+                                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-600"></div>
+                                    <span className="ml-2 text-sm text-gray-500">Loading...</span>
                                 </div>
                             </td>
                         </tr>
                     ) : tips.length === 0 ? (
                         <tr>
-                            <td colSpan={3} className="px-6 py-4 text-center text-sm text-gray-500">No tips available</td>
+                            <td colSpan={3} className="px-4 py-8 text-center">
+                                <p className="text-sm text-gray-500">No tips available</p>
+                            </td>
                         </tr>
                     ) : (
-                        tips.map((tip, idx) => (
-                            <tr key={tip.id || idx} className="hover:bg-sky-50/40 transition-colors">
-                                <td className="px-6 py-3 text-base text-gray-900 font-medium">
-                                    <div className="whitespace-pre-line">
-                                        {(() => {
-                                            const maxChars = 120;
-                                            const message = tip.message || tip.tip || '—';
-                                            const isLong = message.length > maxChars;
-                                            const displayText = !tip.expanded && isLong ? message.slice(0, maxChars) + '...' : message;
-                                            return (
-                                                <>
-                                                    {displayText}
-                                                    {isLong && (
-                                                        <button
-                                                            className="ml-2 text-sky-500 hover:text-sky-700 text-xs font-semibold"
-                                                            onClick={() => tip.setExpanded && tip.setExpanded(e => !e)}
-                                                        >
-                                                            {tip.expanded ? 'Show less' : 'Show more'}
-                                                        </button>
-                                                    )}
-                                                </>
-                                            );
-                                        })()}
-                                    </div>
-                                </td>
-                                <td className="px-6 py-3 whitespace-nowrap text-gray-700 text-sm">
-                                    {tip.pond?.pond_name || '—'}
-                                </td>
-                                <td className="px-6 py-3 whitespace-nowrap text-right text-xs font-mono text-gray-500">
-                                    {tip.created_at ? new Date(tip.created_at).toLocaleString() : '—'}
-                                </td>
-                            </tr>
+                        tips.slice(0, 4).map((tip, idx) => (
+                            <TipRow key={tip.id || idx} tip={tip} index={idx} />
                         ))
                     )}
                 </tbody>
@@ -252,28 +260,29 @@ const chartData = [
 
 const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
+// Clean Chart Component
 const DashboardGraph = ({ chartData }) => (
-    <div className="bg-white rounded-xl border border-gray-200 shadow p-6 h-full flex flex-col">
-        <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-900">Weekly Water Quality Trends</h3>
-            <p className="text-sm text-gray-500">Average values across all ponds</p>
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-4 h-full flex flex-col">
+        <div className="mb-4">
+            <h3 className="text-base font-semibold text-gray-900 mb-1">Water Quality Trends</h3>
+            <p className="text-xs text-gray-600">Weekly average values</p>
         </div>
         <div className="flex-grow">
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                     data={chartData}
-                    margin={{ top: 10, right: 30, left: 0, bottom: 10 }}
+                    margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
                 >
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
                     <XAxis
                         dataKey="name"
-                        tick={{ fontSize: 13, fill: '#6b7280' }}
+                        tick={{ fontSize: 11, fill: '#6b7280' }}
                         axisLine={false}
                         tickLine={false}
                     />
                     <YAxis
                         yAxisId="left"
-                        tick={{ fontSize: 13, fill: '#6b7280' }}
+                        tick={{ fontSize: 11, fill: '#6b7280' }}
                         axisLine={false}
                         tickLine={false}
                         domain={[0, 10]}
@@ -281,7 +290,7 @@ const DashboardGraph = ({ chartData }) => (
                     <YAxis
                         yAxisId="right"
                         orientation="right"
-                        tick={{ fontSize: 13, fill: '#6b7280' }}
+                        tick={{ fontSize: 11, fill: '#6b7280' }}
                         axisLine={false}
                         tickLine={false}
                         domain={[0, 10]}
@@ -291,38 +300,31 @@ const DashboardGraph = ({ chartData }) => (
                             background: '#fff',
                             border: '1px solid #e5e7eb',
                             borderRadius: 8,
-                            fontSize: 13,
+                            fontSize: 11,
                             color: '#111827',
-                            fontWeight: 400,
+                            fontWeight: 500,
                         }}
-                        labelStyle={{ color: '#2563eb', fontWeight: 600 }}
-                        itemStyle={{ fontWeight: 400 }}
-                    />
-                    <Legend
-                        iconType="circle"
-                        wrapperStyle={{ fontSize: 13, paddingTop: 16 }}
-                        formatter={(value, entry) => (
-                            <span style={{ color: entry.color, marginLeft: 4 }}>{entry.value === 'avgPH' ? 'Avg pH' : 'Avg DO (mg/L)'}</span>
-                        )}
+                        labelStyle={{ color: '#374151', fontWeight: 600 }}
+                        itemStyle={{ fontWeight: 500 }}
                     />
                     <Line
                         yAxisId="left"
                         type="monotone"
                         dataKey="avgPH"
-                        stroke="#2563eb"
-                        strokeWidth={3}
-                        dot={{ r: 5, fill: '#2563eb', stroke: '#fff', strokeWidth: 1.5 }}
-                        activeDot={{ r: 7, fill: '#2563eb', stroke: '#fff', strokeWidth: 2 }}
+                        stroke="#3b82f6"
+                        strokeWidth={2}
+                        dot={{ r: 4, fill: '#3b82f6', stroke: '#fff', strokeWidth: 1 }}
+                        activeDot={{ r: 5, fill: '#3b82f6', stroke: '#fff', strokeWidth: 1 }}
                         name="Avg pH"
                     />
                     <Line
                         yAxisId="right"
                         type="monotone"
                         dataKey="avgDO"
-                        stroke="#38bdf8"
-                        strokeWidth={3}
-                        dot={{ r: 5, fill: '#38bdf8', stroke: '#fff', strokeWidth: 1.5 }}
-                        activeDot={{ r: 7, fill: '#38bdf8', stroke: '#fff', strokeWidth: 2 }}
+                        stroke="#10b981"
+                        strokeWidth={2}
+                        dot={{ r: 4, fill: '#10b981', stroke: '#fff', strokeWidth: 1 }}
+                        activeDot={{ r: 5, fill: '#10b981', stroke: '#fff', strokeWidth: 1 }}
                         name="Avg DO (mg/L)"
                     />
                 </LineChart>
@@ -359,6 +361,8 @@ const Dashboard = () => {
 
         channel.bind('dashboard.updated', (data) => {
             setStat(data.data);
+            console.log('✅ data data to dashboard channel');
+
         });
 
         return () => {
@@ -369,7 +373,6 @@ const Dashboard = () => {
 
     const dynamicChartData = (() => {
         if (!isLoading && stat?.weekly_ph_do && Array.isArray(stat.weekly_ph_do)) {
-            // Map backend data to a lookup by day
             const lookup = Object.fromEntries(
                 stat.weekly_ph_do.map(d => [d.date, {
                     name: d.date,
@@ -377,34 +380,36 @@ const Dashboard = () => {
                     avgDO: d.avgDO ? parseFloat(d.avgDO) : 0,
                 }])
             );
-            // Ensure all days are present, fill missing with 0
             return WEEK_DAYS.map(day => lookup[day] || { name: day, avgPH: 0, avgDO: 0 });
         }
         return chartData;
     })();
 
     return (
-        <div className="min-h-screen bg-gray-50 p-4 md:p-6">
-            <div className="max-w-7xl mx-auto">
+        <div className="min-h-screen bg-gray-50 p-4">
+            <div className="max-w-6xl mx-auto">
 
 
-                <div className="mb-8">
-                    <StatCards stat={stat} isLoading={isLoading} />
+                {/* Stats Cards */}
+                <StatCards stat={stat} isLoading={isLoading} />
+
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 mb-6">
+                    <div className="xl:col-span-3">
+                        <div className="h-80">
+                            <DashboardGraph chartData={dynamicChartData} />
+                        </div>
+                    </div>
+                    <div className="xl:col-span-1">
+                        <div className="h-80">
+                            <AlertsTable alerts={stat?.latest_alerts || []} isLoading={isLoading} />
+                        </div>
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                    <div className="lg:col-span-2">
-                        <DashboardGraph chartData={dynamicChartData} />
-                    </div>
-                    <div className="space-y-6">
-                        <AlertsTable alerts={stat?.latest_alerts || []} isLoading={isLoading} />
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div className="lg:col-span-3">
-                        <TipsTable tips={stat?.latest_tasks || []} isLoading={isLoading} />
-                    </div>
+                {/* Tips Section */}
+                <div className="mb-6">
+                    <TipsTable tips={stat?.latest_tasks || []} isLoading={isLoading} />
                 </div>
             </div>
         </div>
