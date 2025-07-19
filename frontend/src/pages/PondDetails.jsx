@@ -133,7 +133,7 @@ const PondDetails = () => {
                     </div>
                 </div>
                 <div className="mb-6">
-                    <Link to="/ponds" className="text-blue-600 hover:underline">← Back to Ponds</Link>
+                    <Link to="/ponds" className="text-[#FB3026] hover:underline">← Back to Ponds</Link>
                 </div>
                 <hr className="my-8 border-gray-200" />
                 <div className="bg-white rounded-xl shadow p-6 border border-gray-100 mb-8">

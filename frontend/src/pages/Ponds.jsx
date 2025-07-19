@@ -33,7 +33,7 @@ const SafeRangeDisplay = ({ safeRange }) => (
             <span className="text-gray-600">Temp: {safeRange.temperature.min}-{safeRange.temperature.max}°{safeRange.temperature.unit}</span>
         </div>
         <div className="flex items-center text-xs">
-            <Droplets className="w-3 h-3 text-blue-500 mr-1" />
+            <Droplets className="w-3 h-3 text-[#FB3026] mr-1" />
             <span className="text-gray-600">O₂: {safeRange.oxygen.min}-{safeRange.oxygen.max} {safeRange.oxygen.unit}</span>
         </div>
     </div>
@@ -51,7 +51,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedSize, setSelectedS
                     placeholder="Search ponds..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                 />
             </div>
 
@@ -60,7 +60,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedSize, setSelectedS
                 <select
                     value={selectedSize}
                     onChange={(e) => setSelectedSize(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-white"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026] appearance-none bg-white"
                 >
                     <option value="">All Sizes</option>
                     <option value="Large">Large</option>
@@ -75,7 +75,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedSize, setSelectedS
                 <select
                     value={selectedRegion}
                     onChange={(e) => setSelectedRegion(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-white"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026] appearance-none bg-white"
                 >
                     <option value="">All Regions</option>
                     {regions.map(region => (
@@ -110,7 +110,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => (
                         key={page}
                         onClick={() => onPageChange(page)}
                         className={`px-3 py-1 rounded-lg text-sm ${page === currentPage
-                            ? 'bg-blue-600 text-white'
+                            ? 'bg-[#FB3026] text-white'
                             : 'border border-gray-300 hover:bg-gray-50'
                             }`}
                     >
@@ -137,7 +137,7 @@ const PondsTable = ({ ponds, isLoading, onView, onEdit, onDelete }) => {
         return (
             <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-8 text-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#FB3026] mx-auto mb-4"></div>
                     <p className="text-gray-600">Loading ponds...</p>
                 </div>
             </div>
@@ -176,7 +176,7 @@ const PondsTable = ({ ponds, isLoading, onView, onEdit, onDelete }) => {
                                 <td className="px-6 py-4">
                                     <div className="flex items-center">
                                         <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                                            <MapPin className="w-4 h-4 text-blue-600" />
+                                            <MapPin className="w-4 h-4 text-[#FB3026]" />
                                         </div>
                                         <div>
                                             <button
@@ -221,7 +221,7 @@ const PondsTable = ({ ponds, isLoading, onView, onEdit, onDelete }) => {
                                     <div className="flex items-center justify-end space-x-2">
                                         <button
                                             onClick={() => onView(pond)}
-                                            className="p-1 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded"
+                                            className="p-1 text-[#FB3026] hover:text-blue-800 hover:bg-blue-50 rounded"
                                             title="View Details"
                                         >
                                             <Eye className="w-4 h-4" />
@@ -343,7 +343,7 @@ const Ponds = () => {
                         </div>
                         <button
                             onClick={handleAddPond}
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200"
+                            className="bg-[#FB3026] hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200"
                         >
                             <Plus className="w-4 h-4" />
                             <span>Add Pond</span>

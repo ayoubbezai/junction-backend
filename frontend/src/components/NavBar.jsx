@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { LayoutDashboard, Settings, User, Waves, Bell, FileText, Lightbulb } from 'lucide-react'
 import fishtaLogo from '../assets/fishtaLogo.webp'
+import { LocaleSwitcher } from "lingo.dev/react/client"
+
 
 const navLinks = [
     {
@@ -34,6 +36,7 @@ const navLinks = [
 
 const NavBar = () => {
     const location = useLocation()
+
     return (
         <aside className="h-screen w-48 bg-white border-r border-gray-100 flex flex-col items-center py-6 px-2 shadow-sm fixed z-20">
             <div className="mb-8 flex flex-col items-center">
@@ -41,6 +44,7 @@ const NavBar = () => {
                     <img src={fishtaLogo} alt="Fishta Logo" className="h-10 w-auto" />
                 </div>
                 <span className="font-extrabold text-lg tracking-tight text-[#FC2F26] mt-2">Fishta</span>
+                <LocaleSwitcher locales={["en", "fr", "ar"]} />
             </div>
             <nav className="flex flex-col gap-1 flex-1 w-full">
                 {navLinks.map(link => {

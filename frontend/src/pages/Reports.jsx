@@ -9,9 +9,9 @@ const FileTypeIcon = ({ filename }) => {
 
     const iconMap = {
         'pdf': <FileText className="w-5 h-5 text-red-500" />,
-        'txt': <FileText className="w-5 h-5 text-blue-500" />,
-        'doc': <FileText className="w-5 h-5 text-blue-600" />,
-        'docx': <FileText className="w-5 h-5 text-blue-600" />,
+        'txt': <FileText className="w-5 h-5 text-[#FB3026]" />,
+        'doc': <FileText className="w-5 h-5 text-[#FB3026]" />,
+        'docx': <FileText className="w-5 h-5 text-[#FB3026]" />,
         'jpg': <FileImage className="w-5 h-5 text-green-500" />,
         'jpeg': <FileImage className="w-5 h-5 text-green-500" />,
         'png': <FileImage className="w-5 h-5 text-green-500" />,
@@ -80,7 +80,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedType, setSelectedT
                     placeholder="Search reports..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                 />
             </div>
 
@@ -89,7 +89,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedType, setSelectedT
                 <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-white"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026] appearance-none bg-white"
                 >
                     <option value="">All Types</option>
                     <option value="pdf">PDF</option>
@@ -111,7 +111,7 @@ const ReportsGrid = ({ reports, isLoading, onView, onDownload, onDelete }) => {
         return (
             <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-8 text-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#FB3026] mx-auto mb-4"></div>
                     <p className="text-gray-600">Loading reports...</p>
                 </div>
             </div>
@@ -157,7 +157,7 @@ const ReportsGrid = ({ reports, isLoading, onView, onDownload, onDelete }) => {
                         <div className="flex items-center space-x-2">
                             <button
                                 onClick={() => onView(report)}
-                                className="p-1 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded"
+                                className="p-1 text-[#FB3026] hover:text-blue-800 hover:bg-blue-50 rounded"
                                 title="View Report"
                             >
                                 <Eye className="w-4 h-4" />
@@ -223,7 +223,7 @@ const GenerateReportModal = ({ open, onClose, onSubmit, pondOptions }) => {
                         <select
                             value={period}
                             onChange={e => setPeriod(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                         >
                             <option value="week">Week</option>
                             <option value="month">Month</option>
@@ -234,7 +234,7 @@ const GenerateReportModal = ({ open, onClose, onSubmit, pondOptions }) => {
                         <select
                             value={pond}
                             onChange={e => setPond(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                         >
                             <option value="">Select Pond</option>
                             {pondOptions.map(p => (
@@ -252,7 +252,7 @@ const GenerateReportModal = ({ open, onClose, onSubmit, pondOptions }) => {
                         </button>
                         <button
                             type="submit"
-                            className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+                            className="px-4 py-2 rounded-lg bg-[#FB3026] text-white hover:bg-blue-700"
                         >
                             Generate
                         </button>
@@ -353,7 +353,7 @@ const Reports = () => {
                             </p>
                         </div>
                         <button
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200"
+                            className="bg-[#FB3026] hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200"
                             onClick={() => setShowModal(true)}
                         >
                             <Plus className="w-4 h-4" />

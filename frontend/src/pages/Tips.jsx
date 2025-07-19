@@ -45,7 +45,7 @@ const ExpandableMessage = ({ message }) => {
             </p>
             <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="text-xs text-blue-600 hover:text-blue-800 mt-1 font-medium"
+                className="text-xs text-[#FB3026] hover:text-blue-800 mt-1 font-medium"
             >
                 {isExpanded ? 'See less' : 'See more'}
             </button>
@@ -65,7 +65,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedPond, setSelectedP
                     placeholder="Search tips..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                 />
             </div>
 
@@ -74,7 +74,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedPond, setSelectedP
                 <select
                     value={selectedPond}
                     onChange={(e) => setSelectedPond(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-white"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026] appearance-none bg-white"
                 >
                     <option value="">All Ponds</option>
                     {ponds.map(pond => (
@@ -95,7 +95,7 @@ const TipsTable = ({ tips, isLoading, onView, onDelete }) => {
         return (
             <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-8 text-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#FB3026] mx-auto mb-4"></div>
                     <p className="text-gray-600">Loading tips...</p>
                 </div>
             </div>
@@ -157,7 +157,7 @@ const TipsTable = ({ tips, isLoading, onView, onDelete }) => {
                                     <div className="flex items-center space-x-2">
                                         <button
                                             onClick={() => onView(tip)}
-                                            className="p-1 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded"
+                                            className="p-1 text-[#FB3026] hover:text-blue-800 hover:bg-blue-50 rounded"
                                             title="View Tip"
                                         >
                                             <Eye className="w-4 h-4" />

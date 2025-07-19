@@ -1,0 +1,1393 @@
+{
+  "version": 0.1,
+  "files": {
+    "App.jsx": {
+      "scopes": {
+        "10/0/init/body/0/argument/3/1/1/openingElement/1/value/expression/1": {
+          "type": "element",
+          "hash": "4a43ab95debc984fed2b95c7fc66fdb3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "hello"
+        },
+        "10/0/init/body/0/argument/3/1/1/openingElement/1/value/expression/3": {
+          "type": "element",
+          "hash": "4a43ab95debc984fed2b95c7fc66fdb3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "hello"
+        }
+      }
+    },
+    "components/NavBar.jsx": {
+      "scopes": {
+        "6/0/init/body/1/argument/1/1/1-alt": {
+          "type": "attribute",
+          "hash": "e0cd71185371e131fd6978cd75545d06",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Fishta Logo"
+        },
+        "6/0/init/body/1/argument/1/3": {
+          "type": "element",
+          "hash": "a35fc8b7664575fd68f630b78c88b9f9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Fishta"
+        },
+        "6/0/init/body/1/argument/5/1/3": {
+          "type": "element",
+          "hash": "d7878693f91303a438852d617f6d35df",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Profile"
+        }
+      }
+    },
+    "components/ui/modals/AddPondModal.jsx": {
+      "scopes": {
+        "3/0/init/body/11/argument/1/3/1": {
+          "type": "element",
+          "hash": "402b23f58b3f8b1362d7c89cd9948995",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Add New Pond"
+        },
+        "3/0/init/body/11/argument/1/7/13/1": {
+          "type": "element",
+          "hash": "e3e6cdb16faa444a435a4ef412e96fb1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Cancel"
+        },
+        "3/0/init/body/11/argument/1/7/5/1": {
+          "type": "element",
+          "hash": "4a5a10f8b5143561abe60fe863ac2a6b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Basic Information"
+        },
+        "3/0/init/body/11/argument/1/7/5/3/1/1": {
+          "type": "element",
+          "hash": "a1a51f5449298facc92b2d0a5152a4e8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Region *"
+        },
+        "3/0/init/body/11/argument/1/7/5/3/1/3/1": {
+          "type": "element",
+          "hash": "3da433932d64543320b382d8b1df3726",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Select Region"
+        },
+        "3/0/init/body/11/argument/1/7/5/3/3/1": {
+          "type": "element",
+          "hash": "dac24582320e5c3483bee51d55c02842",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Size *"
+        },
+        "3/0/init/body/11/argument/1/7/5/3/3/3/1": {
+          "type": "element",
+          "hash": "c7c8fec4ae10754f08ec9ed8b030921a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Select Size"
+        },
+        "3/0/init/body/11/argument/1/7/5/3/3/3/3": {
+          "type": "element",
+          "hash": "3adb3ae7891c5736776df840cff2360b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Small"
+        },
+        "3/0/init/body/11/argument/1/7/5/3/3/3/5": {
+          "type": "element",
+          "hash": "43983f2178fb28aacaef6c5f41282c4a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Medium"
+        },
+        "3/0/init/body/11/argument/1/7/5/3/3/3/7": {
+          "type": "element",
+          "hash": "890b7851af05f97ac53644e4154c13b4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Large"
+        },
+        "3/0/init/body/11/argument/1/7/5/3/3/3/9": {
+          "type": "element",
+          "hash": "789a313aebe20e24972eaa31422f9741",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Extra Large"
+        },
+        "3/0/init/body/11/argument/1/7/5/5/1/1": {
+          "type": "element",
+          "hash": "37997c6409f8851e9680367fb0d41951",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pond Name *"
+        },
+        "3/0/init/body/11/argument/1/7/5/5/1/3-placeholder": {
+          "type": "attribute",
+          "hash": "7ab2d9f21752802bd3b5db3d5b106917",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Enter pond name"
+        },
+        "3/0/init/body/11/argument/1/7/5/5/3/1": {
+          "type": "element",
+          "hash": "3e123431a4a0873e4c57aa263028f67c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Location *"
+        },
+        "3/0/init/body/11/argument/1/7/5/5/3/3-placeholder": {
+          "type": "attribute",
+          "hash": "142e1ce0d5378d46cdc4d2f1d6fdc427",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Enter location"
+        },
+        "3/0/init/body/11/argument/1/7/9/1": {
+          "type": "element",
+          "hash": "bf356e7b6e3e90e18e633b3191aad6c7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Safe Ranges"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/11/1": {
+          "type": "element",
+          "hash": "83ae4f44e4ef31bf41c9788a9b1eca9b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Oxygen Range"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/11/3/1/1": {
+          "type": "element",
+          "hash": "d9759235086d0169928b3c1401115e22",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Minimum"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/11/3/3/1": {
+          "type": "element",
+          "hash": "4c07541dd1f093775bdc61b559cca6c8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Maximum"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/11/3/5": {
+          "type": "element",
+          "hash": "2ac736ba6a4a388306cf502f62ce5d15",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Unit: {formData.safe_range.oxygen.unit}"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/3/1": {
+          "type": "element",
+          "hash": "fa805882d1b60e1d7b3cd00e1d446cc0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "pH Range"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/3/3/1/1": {
+          "type": "element",
+          "hash": "d9759235086d0169928b3c1401115e22",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Minimum"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/3/3/3/1": {
+          "type": "element",
+          "hash": "4c07541dd1f093775bdc61b559cca6c8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Maximum"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/3/3/5": {
+          "type": "element",
+          "hash": "2ac736ba6a4a388306cf502f62ce5d15",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Unit: {formData.safe_range.ph.unit}"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/7/1": {
+          "type": "element",
+          "hash": "74209c0ee8a577336be6526dd7f9cde6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Temperature Range"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/7/3/1/1": {
+          "type": "element",
+          "hash": "d9759235086d0169928b3c1401115e22",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Minimum"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/7/3/3/1": {
+          "type": "element",
+          "hash": "4c07541dd1f093775bdc61b559cca6c8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Maximum"
+        },
+        "3/0/init/body/11/argument/1/7/9/3/7/3/5": {
+          "type": "element",
+          "hash": "2ac736ba6a4a388306cf502f62ce5d15",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Unit: {formData.safe_range.temperature.unit}"
+        }
+      }
+    },
+    "pages/Alerts.jsx": {
+      "scopes": {
+        "5/0/init/body/1/3/3-placeholder": {
+          "type": "attribute",
+          "hash": "5294b92a0d17f4fd9f9a8901964dbc80",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Search alerts..."
+        },
+        "5/0/init/body/1/7/1/1": {
+          "type": "element",
+          "hash": "e2ea11fe8c975ba986cac2255c5ed9b4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All Levels"
+        },
+        "5/0/init/body/1/7/1/3": {
+          "type": "element",
+          "hash": "eb327cd411b50aee954f8d1d215d003a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Critical"
+        },
+        "5/0/init/body/1/7/1/5": {
+          "type": "element",
+          "hash": "6618da2c7e5e93bb4ea0e16d29ab8c4c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Warning"
+        },
+        "5/0/init/body/1/7/1/7": {
+          "type": "element",
+          "hash": "5a6cc405211f675152b2460292fe0fb9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Info"
+        },
+        "5/0/init/body/1/7/1/9": {
+          "type": "element",
+          "hash": "c43827becada6750f7a25890905f38b9",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Success"
+        },
+        "6/0/init/body/1": {
+          "type": "element",
+          "hash": "858d9ce9a9b9dbb69415bd33dc0318f0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Page {currentPage} of {totalPages}"
+        },
+        "7/0/init/body/0/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "21ed215cce4bcc3154f6802aa297839c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading alerts..."
+        },
+        "7/0/init/body/1/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "cdca3fa57392bbed17ec9679fb675454",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No alerts found"
+        },
+        "7/0/init/body/1/consequent/0/argument/1/5": {
+          "type": "element",
+          "hash": "39fb458f5babf7ea6f34eaa72f13b90a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All systems are running smoothly"
+        },
+        "7/0/init/body/2/argument/1/1/1/1/1": {
+          "type": "element",
+          "hash": "f04d0b3de52842ca3c5397a59903c40d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Alert Details"
+        },
+        "7/0/init/body/2/argument/1/1/1/1/3": {
+          "type": "element",
+          "hash": "1e3bf31d5c6083e898dd3e3359fbb0c2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Level"
+        },
+        "7/0/init/body/2/argument/1/1/1/1/5": {
+          "type": "element",
+          "hash": "cae137e23a350bb23e21b1c51e475267",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pond ID"
+        },
+        "7/0/init/body/2/argument/1/1/1/1/7": {
+          "type": "element",
+          "hash": "b504a03d52e8001bfdc5cb6205364f42",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Time"
+        },
+        "7/0/init/body/2/argument/1/1/1/1/9": {
+          "type": "element",
+          "hash": "c46571856723b03262fd33f511116298",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Actions"
+        },
+        "7/0/init/body/2/argument/1/1/3/1/expression/0/body/1/1/1/3/3": {
+          "type": "element",
+          "hash": "8ab242d766fd9e01e052d455dc6164ef",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "ID: {alert.id}"
+        },
+        "7/0/init/body/2/argument/1/1/3/1/expression/0/body/5/1/3": {
+          "type": "element",
+          "hash": "c878101b72af9486f5a5d89c6195c59d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pond {alert.pond_id}"
+        },
+        "7/0/init/body/2/argument/1/1/3/1/expression/0/body/9/1/1-title": {
+          "type": "attribute",
+          "hash": "f89b1a0b178c4e8448cdbee27998ed03",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View Details"
+        },
+        "7/0/init/body/2/argument/1/1/3/1/expression/0/body/9/1/3-title": {
+          "type": "attribute",
+          "hash": "2985bcc5e1a8d49bbe0026fd7877fe62",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Delete Alert"
+        },
+        "8/0/init/body/13/argument/1/3/1/1": {
+          "type": "element",
+          "hash": "7fc3556d75f6e6bcf8d977fd74cbd230",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Alerts Management"
+        },
+        "8/0/init/body/13/argument/1/3/1/3": {
+          "type": "element",
+          "hash": "3961a315cdf99582e443403e0023c22c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Monitor and manage system alerts ({totalItems} total alerts)"
+        }
+      }
+    },
+    "pages/Dashboard.jsx": {
+      "scopes": {
+        "10/0/init/body/1/1/1/3": {
+          "type": "element",
+          "hash": "df2581a7039bba2df9e71568ae288cca",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Recent Tips"
+        },
+        "10/0/init/body/3/1/1/1/1": {
+          "type": "element",
+          "hash": "903bd558c3c43f3b2453afb9ab6dcc1d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Tip"
+        },
+        "10/0/init/body/3/1/1/1/3": {
+          "type": "element",
+          "hash": "7c07cc3c854f8dc15f1c890f5030b948",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pond"
+        },
+        "10/0/init/body/3/1/1/1/5": {
+          "type": "element",
+          "hash": "b504a03d52e8001bfdc5cb6205364f42",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Time"
+        },
+        "10/0/init/body/3/1/3/1/expression/alternate/consequent/1/1": {
+          "type": "element",
+          "hash": "abb7088d02a3513ec9f712a1956e5053",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No tips available"
+        },
+        "10/0/init/body/3/1/3/1/expression/consequent/1/1/3": {
+          "type": "element",
+          "hash": "82b4ea7ed1439094d7c4be13aaba9a66",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading..."
+        },
+        "13/0/init/body/1/1": {
+          "type": "element",
+          "hash": "92c4ad6adba3f6efc2ad6577dd28113e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Water Quality Trends"
+        },
+        "13/0/init/body/1/3": {
+          "type": "element",
+          "hash": "2416f0de6bc3994de5cf3e78cf545206",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Weekly average values"
+        },
+        "8/0/init/body/1/1/1/3": {
+          "type": "element",
+          "hash": "3247366fcb58479b333ac41261a76637",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Recent Alerts"
+        },
+        "8/0/init/body/3/1/1/1/1": {
+          "type": "element",
+          "hash": "f2f72126bd244cfc534eab395e054362",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Message"
+        },
+        "8/0/init/body/3/1/1/1/3": {
+          "type": "element",
+          "hash": "1e3bf31d5c6083e898dd3e3359fbb0c2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Level"
+        },
+        "8/0/init/body/3/1/1/1/5": {
+          "type": "element",
+          "hash": "b504a03d52e8001bfdc5cb6205364f42",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Time"
+        },
+        "8/0/init/body/3/1/3/1/expression/alternate/consequent/1/1": {
+          "type": "element",
+          "hash": "cdca3fa57392bbed17ec9679fb675454",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No alerts found"
+        },
+        "8/0/init/body/3/1/3/1/expression/consequent/1/1/3": {
+          "type": "element",
+          "hash": "82b4ea7ed1439094d7c4be13aaba9a66",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading..."
+        }
+      }
+    },
+    "pages/PondDetails.jsx": {
+      "scopes": {
+        "7/0/init/body/21/consequent/argument": {
+          "type": "element",
+          "hash": "a2d5a5ac2dcdd72d4f3123f6873ff763",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading pond details..."
+        },
+        "7/0/init/body/22/argument/1/11/1": {
+          "type": "element",
+          "hash": "2ba1880d03b4543a84eb0b4a676af3e1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Database></element:Database>Sensors"
+        },
+        "7/0/init/body/22/argument/1/11/3/expression/alternate/alternate/1/1/1/1": {
+          "type": "element",
+          "hash": "f04471a7ddac844b9ad145eb9911ef75",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Type"
+        },
+        "7/0/init/body/22/argument/1/11/3/expression/alternate/alternate/1/1/1/3": {
+          "type": "element",
+          "hash": "f764b79e593b141efc282330f64a43d7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Serial"
+        },
+        "7/0/init/body/22/argument/1/11/3/expression/alternate/alternate/1/1/1/5": {
+          "type": "element",
+          "hash": "a5e2f96308799b23b1ade4448c93b8f7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Unit"
+        },
+        "7/0/init/body/22/argument/1/11/3/expression/alternate/alternate/1/1/1/7": {
+          "type": "element",
+          "hash": "4e1fcce15854d824919b4a582c697c90",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Status"
+        },
+        "7/0/init/body/22/argument/1/11/3/expression/alternate/alternate/1/1/1/9": {
+          "type": "element",
+          "hash": "ab3e44f2c4ef50453b64c806b9251e97",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Installed At"
+        },
+        "7/0/init/body/22/argument/1/11/3/expression/alternate/consequent": {
+          "type": "element",
+          "hash": "edf276eedb18cd5ff10a343edd8418b0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No sensors found for this pond."
+        },
+        "7/0/init/body/22/argument/1/11/3/expression/consequent": {
+          "type": "element",
+          "hash": "c043652381be22631d66df782207fb5a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading sensors..."
+        },
+        "7/0/init/body/22/argument/1/17/1/1/3": {
+          "type": "element",
+          "hash": "ce6e8150c2d2e97b5ac0aa906a57e7c1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sensor Readings"
+        },
+        "7/0/init/body/22/argument/1/17/1/1/5-title": {
+          "type": "attribute",
+          "hash": "32fa14576914ded2863f075f9c78b670",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Historical sensor readings for this pond."
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/alternate/1/1/1/1": {
+          "type": "element",
+          "hash": "56f41c5d30a76295bb087b20b7bee4c3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Date"
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/alternate/1/1/1/11": {
+          "type": "element",
+          "hash": "37f2f2a477632e3d63b89e0ba285a934",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Secchi Depth"
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/alternate/1/1/1/13": {
+          "type": "element",
+          "hash": "933c96b3a6cc5c14443a3f50a9cd50e6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Water Depth"
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/alternate/1/1/1/3": {
+          "type": "element",
+          "hash": "0e561bce27d7e4301fa74a80190873a3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "pH"
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/alternate/1/1/1/5": {
+          "type": "element",
+          "hash": "8aaa10afb152788ab43211e9f6e615cf",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Dissolved O₂"
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/alternate/1/1/1/7": {
+          "type": "element",
+          "hash": "13d74a3afe9317caccb7b7b26f503a14",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Water Temp"
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/alternate/1/1/1/9": {
+          "type": "element",
+          "hash": "a04fe8c5a5cc613d5875087cbc61bf67",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Air Temp"
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/alternate/1/3/1/expression/0/body/1/1/expression/right": {
+          "type": "element",
+          "hash": "d1c09d4154d170b5d89a4c8169d830e2",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "NEW"
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/alternate/consequent": {
+          "type": "element",
+          "hash": "e4b3c76b1638a84cb501a933a65e562b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No readings found for this pond."
+        },
+        "7/0/init/body/22/argument/1/17/3/expression/consequent": {
+          "type": "element",
+          "hash": "70e5e2e5bc3343fdb5ddc8405c0f3a85",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading readings..."
+        },
+        "7/0/init/body/22/argument/1/17/7/1": {
+          "type": "element",
+          "hash": "c3bb4a0c55b98a8780160f67e7ced07d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Page {readingPage} of {readingTotalPages} ({readingTotalItems} total readings)"
+        },
+        "7/0/init/body/22/argument/1/17/7/3/1": {
+          "type": "element",
+          "hash": "1d360b35a90ecbd803ae4b3ece01ea6f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Previous"
+        },
+        "7/0/init/body/22/argument/1/17/7/3/3": {
+          "type": "element",
+          "hash": "cc59c59d3143f664d28958b8937a83d3",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Next"
+        },
+        "7/0/init/body/22/argument/1/3/3/3/3": {
+          "type": "element",
+          "hash": "0ac9a8314e2f86f5858ed247eb3255f8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "|"
+        },
+        "7/0/init/body/22/argument/1/3/3/3/5": {
+          "type": "element",
+          "hash": "4935f58cd311dd85286ea63730864394",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Users></element:Users>Region: <expression/>"
+        },
+        "7/0/init/body/22/argument/1/3/3/3/7": {
+          "type": "element",
+          "hash": "0ac9a8314e2f86f5858ed247eb3255f8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "|"
+        },
+        "7/0/init/body/22/argument/1/3/3/3/9": {
+          "type": "element",
+          "hash": "9e4f2c3314505c3fc0cc94b774411b5c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "<element:Database></element:Database>Size: {pond.size}"
+        },
+        "7/0/init/body/22/argument/1/5/1/1/3": {
+          "type": "element",
+          "hash": "bf356e7b6e3e90e18e633b3191aad6c7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Safe Ranges"
+        },
+        "7/0/init/body/22/argument/1/5/1/3": {
+          "type": "element",
+          "hash": "6d4fa7a00d9fb5c2510a269d9166f7ab",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "pH: <element:span><expression/>-<expression/> <expression/></element:span>"
+        },
+        "7/0/init/body/22/argument/1/5/1/5": {
+          "type": "element",
+          "hash": "528486537ea77a98cd99be6a6d51a6fc",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Temp: <element:span><expression/>-<expression/>°<expression/></element:span>"
+        },
+        "7/0/init/body/22/argument/1/5/1/7": {
+          "type": "element",
+          "hash": "fab94cac50b9e6fa513ed13ffb5fb3eb",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "O₂: <element:span><expression/>-<expression/> <expression/></element:span>"
+        },
+        "7/0/init/body/22/argument/1/5/3/3": {
+          "type": "element",
+          "hash": "2ba1880d03b4543a84eb0b4a676af3e1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Sensors"
+        },
+        "7/0/init/body/22/argument/1/5/3/5": {
+          "type": "element",
+          "hash": "646d864aab5966792b627be467287682",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Created: <function:Date.toLocaleDateString/>"
+        },
+        "7/0/init/body/22/argument/1/7/1": {
+          "type": "element",
+          "hash": "83693f302ad83ffba4dce5f8d04756a6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "← Back to Ponds"
+        }
+      }
+    },
+    "pages/Ponds.jsx": {
+      "scopes": {
+        "10/0/init/body/20/argument/1/3/1/1/1": {
+          "type": "element",
+          "hash": "cf45817d9ef40197b27e0cb81ba79d01",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Ponds Management"
+        },
+        "10/0/init/body/20/argument/1/3/1/1/3": {
+          "type": "element",
+          "hash": "f4c55879bfe00f139709055c523a09ae",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Manage your aquaculture ponds ({totalItems} total ponds)"
+        },
+        "10/0/init/body/20/argument/1/3/1/3/3": {
+          "type": "element",
+          "hash": "9b0177e20b8118c9ef3072f54e4c719a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Add Pond"
+        },
+        "6/0/init/body/1/3": {
+          "type": "element",
+          "hash": "adf720dae3824c53bd77ad8751ab217a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "pH: {safeRange.ph.min}-{safeRange.ph.max} {safeRange.ph.unit}"
+        },
+        "6/0/init/body/3/3": {
+          "type": "element",
+          "hash": "5d10fc055bf9c20c4ca438993ea8d823",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Temp: {safeRange.temperature.min}-{safeRange.temperature.max}°{safeRange.temperature.unit}"
+        },
+        "6/0/init/body/5/3": {
+          "type": "element",
+          "hash": "d0ae6e4f8fe0540beba2c0cf7f13755c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "O₂: {safeRange.oxygen.min}-{safeRange.oxygen.max} {safeRange.oxygen.unit}"
+        },
+        "7/0/init/body/1/11/1/1": {
+          "type": "element",
+          "hash": "e86bddf9526a82a951d58129075268af",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All Regions"
+        },
+        "7/0/init/body/1/3/3-placeholder": {
+          "type": "attribute",
+          "hash": "29cc69f3e76da97bf206c4905e3a44b6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Search ponds..."
+        },
+        "7/0/init/body/1/7/1/1": {
+          "type": "element",
+          "hash": "2f295403cde88eae21ca0f4950fbd825",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All Sizes"
+        },
+        "7/0/init/body/1/7/1/3": {
+          "type": "element",
+          "hash": "890b7851af05f97ac53644e4154c13b4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Large"
+        },
+        "7/0/init/body/1/7/1/5": {
+          "type": "element",
+          "hash": "43983f2178fb28aacaef6c5f41282c4a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Medium"
+        },
+        "7/0/init/body/1/7/1/7": {
+          "type": "element",
+          "hash": "3adb3ae7891c5736776df840cff2360b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Small"
+        },
+        "8/0/init/body/1": {
+          "type": "element",
+          "hash": "858d9ce9a9b9dbb69415bd33dc0318f0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Page {currentPage} of {totalPages}"
+        },
+        "9/0/init/body/1/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "22cfb6f9a6fe9e6aa0e52c4ef96edbda",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading ponds..."
+        },
+        "9/0/init/body/2/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "a4c3eb2fc55445aea031b35ca87f5fdf",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No ponds found"
+        },
+        "9/0/init/body/2/consequent/0/argument/1/5": {
+          "type": "element",
+          "hash": "e8c3b1045764ff63d1a37d343b308637",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Try adjusting your search or filter criteria"
+        },
+        "9/0/init/body/3/argument/1/1/1/1/1": {
+          "type": "element",
+          "hash": "f1cc328fbcee94f9b04bd765bae42f19",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pond Details"
+        },
+        "9/0/init/body/3/argument/1/1/1/1/11": {
+          "type": "element",
+          "hash": "c46571856723b03262fd33f511116298",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Actions"
+        },
+        "9/0/init/body/3/argument/1/1/1/1/3": {
+          "type": "element",
+          "hash": "036cbdfe32bbe9ad67b5d06ef6a02a16",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Location"
+        },
+        "9/0/init/body/3/argument/1/1/1/1/5": {
+          "type": "element",
+          "hash": "227fadeeff951e041ff42031a11a4626",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Size"
+        },
+        "9/0/init/body/3/argument/1/1/1/1/7": {
+          "type": "element",
+          "hash": "bf356e7b6e3e90e18e633b3191aad6c7",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Safe Ranges"
+        },
+        "9/0/init/body/3/argument/1/1/1/1/9": {
+          "type": "element",
+          "hash": "6045b4ff97fb7dca19ebadfa2e34a700",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Created"
+        },
+        "9/0/init/body/3/argument/1/1/3/1/expression/0/body/1/1/3/3": {
+          "type": "element",
+          "hash": "8ab242d766fd9e01e052d455dc6164ef",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "ID: {pond.id}"
+        },
+        "9/0/init/body/3/argument/1/1/3/1/expression/0/body/11/1/1-title": {
+          "type": "attribute",
+          "hash": "f89b1a0b178c4e8448cdbee27998ed03",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View Details"
+        },
+        "9/0/init/body/3/argument/1/1/3/1/expression/0/body/11/1/3-title": {
+          "type": "attribute",
+          "hash": "0c4ba37bf3a45b9cbcdd32283a5de90f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Edit Pond"
+        },
+        "9/0/init/body/3/argument/1/1/3/1/expression/0/body/11/1/5-title": {
+          "type": "attribute",
+          "hash": "091df569279b883d81498cc063e430fc",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Delete Pond"
+        }
+      }
+    },
+    "pages/Reports.jsx": {
+      "scopes": {
+        "10/0/init/body/14/argument/1/3/1/1/1": {
+          "type": "element",
+          "hash": "7b84baaa38148977855dd948a1892174",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Reports Management"
+        },
+        "10/0/init/body/14/argument/1/3/1/1/3": {
+          "type": "element",
+          "hash": "f1d742489da213e045b8f3404e7612e4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Manage and download your system reports ({reports.length} total reports)"
+        },
+        "10/0/init/body/14/argument/1/3/1/3/3": {
+          "type": "element",
+          "hash": "8f20da23bb7692f803a254cb5f99040e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Generate Report"
+        },
+        "7/0/init/body/1/3/3-placeholder": {
+          "type": "attribute",
+          "hash": "d2492831ed8269f60d55af4d65bc9b1a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Search reports..."
+        },
+        "7/0/init/body/1/7/1/1": {
+          "type": "element",
+          "hash": "32b4b35f93cc4c04ba5a5d2192340a99",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All Types"
+        },
+        "7/0/init/body/1/7/1/11": {
+          "type": "element",
+          "hash": "8050c90e4289b105a0780f0fdda6ff66",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Video"
+        },
+        "7/0/init/body/1/7/1/13": {
+          "type": "element",
+          "hash": "2be95a0576c5f2dc8c4359afa6cac340",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Audio"
+        },
+        "7/0/init/body/1/7/1/3": {
+          "type": "element",
+          "hash": "876897932ab5113ca1deaa5074d146ca",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "PDF"
+        },
+        "7/0/init/body/1/7/1/5": {
+          "type": "element",
+          "hash": "4ddccc1974775ed7357f9beaf9361cec",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Text"
+        },
+        "7/0/init/body/1/7/1/7": {
+          "type": "element",
+          "hash": "5ecdc0287221f041681ed05eecde53f4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Document"
+        },
+        "7/0/init/body/1/7/1/9": {
+          "type": "element",
+          "hash": "048ba7a239de0fbd883ade8558415830",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Image"
+        },
+        "8/0/init/body/0/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "78566f956eb3afb0445eadef16191d27",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading reports..."
+        },
+        "8/0/init/body/1/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "4bb4797d1372ee0c6ed6a717c26ba97a",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No reports found"
+        },
+        "8/0/init/body/1/consequent/0/argument/1/5": {
+          "type": "element",
+          "hash": "83cae1916036d0f5d9c23a2868eddf77",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Upload your first report to get started"
+        },
+        "8/0/init/body/2/argument/1/expression/0/body/1/1/3/3": {
+          "type": "element",
+          "hash": "8ab242d766fd9e01e052d455dc6164ef",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "ID: "
+        },
+        "8/0/init/body/2/argument/1/expression/0/body/5/1/1-title": {
+          "type": "attribute",
+          "hash": "3c97ab7d13b655c4ed67eebe8dd2c47d",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View Report"
+        },
+        "8/0/init/body/2/argument/1/expression/0/body/5/1/3-title": {
+          "type": "attribute",
+          "hash": "d647a42241bc25f5cf63fadced13070c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Download Report"
+        },
+        "8/0/init/body/2/argument/1/expression/0/body/5/1/5-title": {
+          "type": "attribute",
+          "hash": "323f044fd9dd9aab4c6116ca804dc0f4",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Delete Report"
+        },
+        "9/0/init/body/5/argument/1/1": {
+          "type": "element",
+          "hash": "8f20da23bb7692f803a254cb5f99040e",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Generate Report"
+        },
+        "9/0/init/body/5/argument/1/3/1/1": {
+          "type": "element",
+          "hash": "779afbd6a307574efb9bd957e9622428",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Period"
+        },
+        "9/0/init/body/5/argument/1/3/1/3/1": {
+          "type": "element",
+          "hash": "436fdd694160827dd6ea4644cdd0a8f8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Week"
+        },
+        "9/0/init/body/5/argument/1/3/1/3/3": {
+          "type": "element",
+          "hash": "ae7bef950efc406ff0980affabc1a64c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Month"
+        },
+        "9/0/init/body/5/argument/1/3/3/1": {
+          "type": "element",
+          "hash": "7c07cc3c854f8dc15f1c890f5030b948",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pond"
+        },
+        "9/0/init/body/5/argument/1/3/3/3/1": {
+          "type": "element",
+          "hash": "799ffa4af3c5a8d26fdbedad85ffab5b",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Select Pond"
+        },
+        "9/0/init/body/5/argument/1/3/5/1": {
+          "type": "element",
+          "hash": "e3e6cdb16faa444a435a4ef412e96fb1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Cancel"
+        },
+        "9/0/init/body/5/argument/1/3/5/3": {
+          "type": "element",
+          "hash": "d6f54ad0a3dcdfceda0b9cd41458f599",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Generate"
+        }
+      }
+    },
+    "pages/Tips.jsx": {
+      "scopes": {
+        "5/0/init/body/1/3/3-placeholder": {
+          "type": "attribute",
+          "hash": "b9f71fbb04c9e9a740cea6ddd8b5ed33",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Search tips..."
+        },
+        "5/0/init/body/1/7/1/1": {
+          "type": "element",
+          "hash": "3486496c626a75fc97583add47c1f47f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "All Ponds"
+        },
+        "6/0/init/body/0/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "dd462bfac4ff3a9b4b799d8af262722c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Loading tips..."
+        },
+        "6/0/init/body/1/consequent/0/argument/1/3": {
+          "type": "element",
+          "hash": "7493c3b537f6374d3907484ef98f40f1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "No tips found"
+        },
+        "6/0/init/body/1/consequent/0/argument/1/5": {
+          "type": "element",
+          "hash": "972ed06c9b93cc5ead54500dd409121c",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Tips will appear here when available"
+        },
+        "6/0/init/body/2/argument/1/1/1/1/1": {
+          "type": "element",
+          "hash": "1ab7215a78ed84211d318e6d4afa1ce1",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Tip"
+        },
+        "6/0/init/body/2/argument/1/1/1/1/3": {
+          "type": "element",
+          "hash": "e09fd6f7ca1bee042b1dc3d309716ead",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pond ID"
+        },
+        "6/0/init/body/2/argument/1/1/1/1/5": {
+          "type": "element",
+          "hash": "82dd9f1103cd48180a915b75fc5562b8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Created"
+        },
+        "6/0/init/body/2/argument/1/1/1/1/7": {
+          "type": "element",
+          "hash": "97767c556ebf56e622ad575c771466f0",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Actions"
+        },
+        "6/0/init/body/2/argument/1/1/3/1/expression/0/body/3": {
+          "type": "element",
+          "hash": "261a17ad19918abba39251609acb4c76",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Pond {tip.pond_id}"
+        },
+        "6/0/init/body/2/argument/1/1/3/1/expression/0/body/7/1/1-title": {
+          "type": "attribute",
+          "hash": "f8567390a51827eb30b542fceddc06f6",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View Tip"
+        },
+        "6/0/init/body/2/argument/1/1/3/1/expression/0/body/7/1/3-title": {
+          "type": "attribute",
+          "hash": "d7fecab0e9ee01f5123e2447d529da1f",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Delete Tip"
+        },
+        "7/0/init/body/11/argument/1/3/1/1/1": {
+          "type": "element",
+          "hash": "4af92b0d084cf4eb172b6d2278f824e8",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "Tips Management"
+        },
+        "7/0/init/body/11/argument/1/3/1/1/3": {
+          "type": "element",
+          "hash": "7b0cbafaef57df72aaf5e9338bb13d82",
+          "context": "",
+          "skip": false,
+          "overrides": {},
+          "content": "View and manage system tips ({tips.length} total tips)"
+        }
+      }
+    }
+  }
+}

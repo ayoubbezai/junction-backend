@@ -67,7 +67,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedLevel, setSelected
                     placeholder="Search alerts..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                 />
             </div>
 
@@ -76,7 +76,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, selectedLevel, setSelected
                 <select
                     value={selectedLevel}
                     onChange={(e) => setSelectedLevel(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-white"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026] appearance-none bg-white"
                 >
                     <option value="">All Levels</option>
                     <option value="critical">Critical</option>
@@ -112,8 +112,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => (
                         key={page}
                         onClick={() => onPageChange(page)}
                         className={`px-3 py-1 rounded-lg text-sm ${page === currentPage
-                                ? 'bg-blue-600 text-white'
-                                : 'border border-gray-300 hover:bg-gray-50'
+                            ? 'bg-[#FB3026] text-white'
+                            : 'border border-gray-300 hover:bg-gray-50'
                             }`}
                     >
                         {page}
@@ -138,7 +138,7 @@ const AlertsTable = ({ alerts, isLoading, onView, onDelete }) => {
         return (
             <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-8 text-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#FB3026] mx-auto mb-4"></div>
                     <p className="text-gray-600">Loading alerts...</p>
                 </div>
             </div>
@@ -192,7 +192,7 @@ const AlertsTable = ({ alerts, isLoading, onView, onDelete }) => {
                                 <td className="px-6 py-4">
                                     <div className="flex items-center">
                                         <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-2">
-                                            <span className="text-xs font-medium text-blue-600">{alert.pond_id}</span>
+                                            <span className="text-xs font-medium text-[#FB3026]">{alert.pond_id}</span>
                                         </div>
                                         <span className="text-sm text-gray-700">Pond {alert.pond_id}</span>
                                     </div>
@@ -204,7 +204,7 @@ const AlertsTable = ({ alerts, isLoading, onView, onDelete }) => {
                                     <div className="flex items-center justify-end space-x-2">
                                         <button
                                             onClick={() => onView(alert)}
-                                            className="p-1 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded"
+                                            className="p-1 text-[#FB3026] hover:text-blue-800 hover:bg-blue-50 rounded"
                                             title="View Details"
                                         >
                                             <Eye className="w-4 h-4" />

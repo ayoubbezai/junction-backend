@@ -7,7 +7,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 // Clean Stat Card Component with Colors
 const StatCard = ({ label, value, icon, isLoading = false, color = "blue" }) => {
     const colorClasses = {
-        blue: "bg-blue-50 text-blue-600 border-blue-200",
+        blue: "bg-blue-50 text-[#FB3026] border-blue-200",
         green: "bg-green-50 text-green-600 border-green-200",
         purple: "bg-purple-50 text-purple-600 border-purple-200",
         orange: "bg-orange-50 text-orange-600 border-orange-200"
@@ -175,7 +175,7 @@ const TipRow = ({ tip, index }) => {
                         {displayText}
                         {isLong && (
                             <button
-                                className="ml-2 text-blue-600 hover:text-blue-800 text-xs font-medium underline"
+                                className="ml-2 text-[#FB3026] hover:text-blue-800 text-xs font-medium underline"
                                 onClick={() => setIsExpanded(!isExpanded)}
                             >
                                 {isExpanded ? 'See less' : 'See more'}

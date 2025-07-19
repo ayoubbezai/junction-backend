@@ -150,7 +150,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                 <select
                                     value={formData.region_id}
                                     onChange={(e) => handleInputChange('region_id', e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                     required
                                 >
                                     <option value="">Select Region</option>
@@ -169,7 +169,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                 <select
                                     value={formData.size}
                                     onChange={(e) => handleInputChange('size', e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                     required
                                 >
                                     <option value="">Select Size</option>
@@ -190,7 +190,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                     type="text"
                                     value={formData.pond_name}
                                     onChange={(e) => handleInputChange('pond_name', e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                     placeholder="Enter pond name"
                                     required
                                 />
@@ -204,7 +204,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                     type="text"
                                     value={formData.location}
                                     onChange={(e) => handleInputChange('location', e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                     placeholder="Enter location"
                                     required
                                 />
@@ -228,7 +228,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                             step="0.1"
                                             value={formData.safe_range.ph.min}
                                             onChange={(e) => handleSafeRangeChange('ph', 'min', e.target.value)}
-                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                         />
                                     </div>
                                     <div>
@@ -238,7 +238,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                             step="0.1"
                                             value={formData.safe_range.ph.max}
                                             onChange={(e) => handleSafeRangeChange('ph', 'max', e.target.value)}
-                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                         />
                                     </div>
                                     <div className="text-xs text-gray-500">Unit: {formData.safe_range.ph.unit}</div>
@@ -256,7 +256,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                             step="0.1"
                                             value={formData.safe_range.temperature.min}
                                             onChange={(e) => handleSafeRangeChange('temperature', 'min', e.target.value)}
-                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                         />
                                     </div>
                                     <div>
@@ -266,7 +266,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                             step="0.1"
                                             value={formData.safe_range.temperature.max}
                                             onChange={(e) => handleSafeRangeChange('temperature', 'max', e.target.value)}
-                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                         />
                                     </div>
                                     <div className="text-xs text-gray-500">Unit: {formData.safe_range.temperature.unit}</div>
@@ -284,7 +284,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                             step="0.1"
                                             value={formData.safe_range.oxygen.min}
                                             onChange={(e) => handleSafeRangeChange('oxygen', 'min', e.target.value)}
-                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                         />
                                     </div>
                                     <div>
@@ -294,7 +294,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                                             step="0.1"
                                             value={formData.safe_range.oxygen.max}
                                             onChange={(e) => handleSafeRangeChange('oxygen', 'max', e.target.value)}
-                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:ring-1 focus:ring-[#FB3026] focus:border-[#FB3026]"
                                         />
                                     </div>
                                     <div className="text-xs text-gray-500">Unit: {formData.safe_range.oxygen.unit}</div>
@@ -316,7 +316,7 @@ const AddPondModal = ({ isOpen, onClose, onSuccess }) => {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center space-x-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="px-4 py-2 bg-[#FB3026] hover:bg-blue-700 text-white rounded-lg flex items-center space-x-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isLoading ? (
                                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
